@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAPKI Cabang Sumatera Barat</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1d5c2e;--g2:#2e7d45;--g3:#4caf6e;--au:#c8922b;--au2:#e8b84b;--cr:#f8f5ef;--ink:#1a1a1a;--ink2:#374151;--mu:#6b7280;--bd:#e5e7eb;--red:#dc2626;--wh:#fff;--r:8px;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cr);color:var(--ink);font-size:15px;line-height:1.65}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button{cursor:pointer;font-family:inherit}ul{list-style:none}
+
+/* ---- EDITABLE ---- */
+[data-ed]{transition:outline .15s}
+body.admin-on [data-ed]:hover{outline:2px dashed var(--au);outline-offset:2px;border-radius:3px;cursor:pointer}
+[data-ed].editing{outline:2px solid var(--g)!important;background:rgba(29,92,46,.06)!important;border-radius:3px;padding:1px 3px}
+
+/* TOPBAR */
+.topbar{background:var(--g);color:rgba(255,255,255,.75);font-size:12px;padding:6px 0;border-bottom:2px solid var(--au)}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-right{display:flex;gap:12px}
+.topbar-right a{color:rgba(255,255,255,.6);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.topbar-right a:hover{color:var(--au2)}
+
+/* NAVBAR */
+.navbar{background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:200;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-logo img{height:38px;width:auto}
+.ndiv{width:1px;height:34px;background:var(--bd)}
+.nlt strong{display:block;font-size:13px;font-weight:800;color:var(--g)}
+.nlt span{font-size:11px;color:var(--mu)}
+.nav-menu{display:flex;align-items:center;gap:2px}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:4px;padding:8px 12px;font-size:13px;font-weight:600;color:var(--ink2);border-radius:6px;transition:all .2s;white-space:nowrap}
+.nav-link:hover,.nav-link.act{color:var(--g);background:rgba(29,92,46,.07)}
+.nav-link svg{width:13px;height:13px;transition:transform .2s}
+.nav-item:hover .nav-link svg{transform:rotate(180deg)}
+.dd{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid var(--bd);border-radius:var(--r);box-shadow:0 8px 32px rgba(0,0,0,.14);min-width:210px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:all .2s;z-index:300}
+.nav-item:hover .dd{opacity:1;pointer-events:all;transform:translateY(0)}
+.dd a{display:block;padding:9px 15px;font-size:13px;color:var(--ink2);border-bottom:1px solid var(--bd);transition:all .2s}
+.dd a:last-child{border-bottom:none}
+.dd a:hover{background:rgba(29,92,46,.06);color:var(--g);padding-left:19px}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:6px;font-size:13px;font-weight:700;border:none;transition:all .2s}
+.btn-primary{background:var(--g);color:#fff}.btn-primary:hover{background:var(--g2)}
+.btn-outline{background:transparent;color:var(--g);border:1.5px solid var(--g)}.btn-outline:hover{background:var(--g);color:#fff}
+.btn-gold{background:var(--au);color:#fff}.btn-gold:hover{background:var(--au2);color:#333}
+.btn-sm{padding:5px 12px;font-size:12px}
+.btn-danger{background:var(--red);color:#fff}.btn-danger:hover{opacity:.85}
+.btn-warn{background:#f59e0b;color:#fff;border:none}.btn-warn:hover{opacity:.85}
+
+/* TICKER */
+.ticker{background:var(--g);overflow:hidden;padding:7px 0}
+.ticker-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center}
+.ticker-label{background:var(--au);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 12px;border-radius:4px;white-space:nowrap;margin-right:18px;flex-shrink:0}
+.ticker-track{overflow:hidden;flex:1}
+.ticker-scroll{display:flex;animation:scroll 40s linear infinite;white-space:nowrap}
+.ticker-scroll span{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);padding:0 26px;display:inline-flex;align-items:center;gap:6px}
+.ticker-scroll span::after{content:'◆';font-size:7px;opacity:.4}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;height:490px;background:var(--g)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s;display:flex;align-items:center}
+.slide.active{opacity:1;z-index:1}
+.slide-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,40,18,.85),rgba(10,40,18,.4) 60%,transparent)}
+.slide-ct{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 24px;width:100%}
+.s-badge{display:inline-flex;align-items:center;gap:6px;background:var(--au);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px}
+.s-title{font-family:'Lora',serif;font-size:clamp(22px,3vw,40px);font-weight:700;color:#fff;line-height:1.2;max-width:580px;margin-bottom:12px}
+.s-desc{font-size:14px;color:rgba(255,255,255,.75);max-width:460px;margin-bottom:22px;line-height:1.65}
+.s-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-ctrl{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);border:none;transition:all .3s;cursor:pointer}
+.hero-dot.active{background:var(--au);width:22px;border-radius:4px}
+.hero-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(255,255,255,.15);border:none;color:#fff;width:42px;height:42px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.hero-arr:hover{background:rgba(255,255,255,.28)}
+.hero-prev{left:18px}.hero-next{right:18px}
+
+/* SECTIONS */
+.section{padding:52px 0}.section-alt{background:#fff}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:26px;padding-bottom:12px;border-bottom:2px solid var(--g)}
+.sec-head-l .eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);margin-bottom:4px}
+.sec-head-l h2{font-family:'Lora',serif;font-size:23px;font-weight:700;color:var(--ink)}
+
+/* STAT */
+.stat-strip{background:var(--g)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-item{padding:26px 28px;border-right:1px solid rgba(255,255,255,.12);text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Lora',serif;font-size:34px;font-weight:700;color:var(--au2);line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em}
+
+/* NEWS */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.news-card{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--bd);transition:all .25s}
+.news-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.nc-img{height:170px;background:linear-gradient(135deg,var(--g),var(--g3));display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;overflow:hidden}
+.nc-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.nc-body{padding:16px}
+.news-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:7px}
+.tag-nat{background:#e8f5e9;color:#1d5c2e}.tag-sb{background:#fef3c7;color:#92400e}
+.tag-hrg{background:#dbeafe;color:#1e40af}.tag-kb{background:#fce7f3;color:#9d174d}
+.tag-env{background:#d1fae5;color:#065f46}.tag-eks{background:#ede9fe;color:#5b21b6}
+.tag-video{background:#fef9c3;color:#854d0e}
+.nc-body h3{font-family:'Lora',serif;font-size:15px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:7px}
+.nc-body p{font-size:12.5px;color:var(--mu);line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.news-meta{font-size:11px;color:var(--mu);display:flex;gap:8px;align-items:center}
+
+/* HERO NEWS */
+.nh-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-bottom:22px}
+.nh-card{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--bd)}
+.nh-img{height:260px;background:linear-gradient(135deg,#1d5c2e,#4caf6e);display:flex;align-items:center;justify-content:center;font-size:66px;position:relative;overflow:hidden}
+.nh-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.nh-body{padding:20px}
+.nh-body h2{font-family:'Lora',serif;font-size:20px;font-weight:700;line-height:1.3;margin-bottom:9px}
+.nh-body p{font-size:13.5px;color:var(--mu);line-height:1.65;margin-bottom:12px}
+.news-stack{display:flex;flex-direction:column}
+.news-mini{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid var(--bd);align-items:start}
+.news-mini:last-child{border-bottom:none}
+.nm-img{width:76px;height:56px;border-radius:6px;background:linear-gradient(135deg,#1d5c2e,#4caf6e);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;position:relative}
+.nm-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.news-mini h4{font-size:12.5px;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:3px}
+
+/* TBS */
+.tbs-wrap{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:start}
+.tbs-tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--bd)}
+.tbs-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbs-tbl th{background:var(--g);color:#fff;padding:9px 12px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.tbs-tbl th:first-child{text-align:left}
+.tbs-tbl td{padding:8px 12px;text-align:center;border-bottom:1px solid var(--bd)}
+.tbs-tbl td:first-child{text-align:left;font-weight:600}
+.tbs-tbl tr:nth-child(even) td{background:#f9fafb}
+.tbs-tbl tr:hover td{background:rgba(29,92,46,.04)}
+.tbs-tbl .peak{color:#16a34a;font-weight:700}
+.price-card{background:var(--g);border-radius:var(--r);padding:22px;color:#fff}
+.price-card h3{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
+.price-big{font-family:'Lora',serif;font-size:44px;font-weight:700;color:var(--au2);line-height:1;margin-bottom:4px}
+.price-sub{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.price-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}
+.price-row:last-child{border-bottom:none}
+.price-row span{color:rgba(255,255,255,.6)}.price-row strong{color:var(--au2)}
+.cup{color:#4ade80;font-size:12px;font-weight:700}.cdn{color:#f87171;font-size:12px;font-weight:700}
+
+/* AGENDA */
+.side-grid{display:grid;grid-template-columns:1fr 350px;gap:28px}
+.agenda-list{display:flex;flex-direction:column}
+.agenda-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--bd);align-items:flex-start}
+.agenda-item:last-child{border-bottom:none}
+.ag-date{background:var(--g);color:#fff;text-align:center;padding:7px 11px;border-radius:6px;min-width:50px;flex-shrink:0}
+.ag-date .day{font-family:'Lora',serif;font-size:21px;font-weight:700;line-height:1;color:var(--au2)}
+.ag-date .mth{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6)}
+.ag-body h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px;line-height:1.3}
+.ag-body p{font-size:12px;color:var(--mu)}
+.peng-card{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--r);padding:16px;margin-bottom:10px}
+.peng-card h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;display:flex;align-items:flex-start;gap:6px}
+.peng-card p{font-size:12px;color:var(--mu);line-height:1.55}
+.peng-card .pdate{font-size:11px;color:var(--au);font-weight:600;margin-top:5px}
+
+/* GALERI */
+.gtabs{display:flex;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:20px;width:fit-content}
+.gtab{padding:8px 20px;font-size:13px;font-weight:700;background:#fff;border:none;color:var(--mu);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.gtab.on{background:var(--g);color:#fff}
+.gtab:not(:last-child){border-right:1px solid var(--bd)}
+.gfilt{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px;align-items:center}
+.gfilt span{font-size:12px;font-weight:700;color:var(--mu);margin-right:3px}
+.fbtn{padding:4px 12px;border-radius:20px;border:1.5px solid var(--bd);background:#fff;font-size:12px;font-weight:600;color:var(--mu);cursor:pointer;transition:all .2s}
+.fbtn.on{background:var(--g);border-color:var(--g);color:#fff}
+.foto-masonry{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.foto-item{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;background:linear-gradient(135deg,var(--g),var(--g3));aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.foto-item img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .35s}
+.foto-item:hover img{transform:scale(1.07)}
+.foto-ph{font-size:2.4rem;position:relative;z-index:1;opacity:.7}
+.foto-ov{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.7));opacity:0;transition:opacity .25s;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:12px}
+.foto-item:hover .foto-ov{opacity:1}
+.foto-ov-ttl{color:#fff;font-size:12.5px;font-weight:700;line-height:1.3;margin-bottom:2px}
+.foto-ov-meta{color:rgba(255,255,255,.65);font-size:11px}
+.foto-badge{position:absolute;top:9px;right:9px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;z-index:3}
+.foto-acts{position:absolute;top:7px;left:7px;display:none;gap:4px;z-index:4}
+.admin-on .foto-acts{display:flex}
+.foto-abt{background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:5px;padding:3px 8px;font-size:10px;cursor:pointer;font-weight:700}
+.foto-abt.red{background:#dc2626}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.video-card{background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--bd);transition:all .25s}
+.video-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.v-thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#1a1a2e,#2d3561);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.v-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.v-play{position:relative;z-index:2;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.video-card:hover .v-play{transform:scale(1.1)}
+.v-play::after{content:'';display:block;width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid var(--g);margin-left:4px}
+.v-dur{position:absolute;bottom:7px;right:7px;background:rgba(0,0,0,.75);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;z-index:2}
+.v-body{padding:13px}
+.v-body h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.35}
+.v-body p{font-size:12px;color:var(--mu);margin-bottom:7px}
+.v-meta{font-size:11px;color:var(--mu);display:flex;gap:8px;align-items:center;justify-content:space-between}
+.v-adm{display:none;gap:4px}
+.admin-on .v-adm{display:flex}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.about-img-box{border-radius:var(--r);overflow:hidden;height:350px;background:linear-gradient(135deg,#1d5c2e,#4caf6e);display:flex;align-items:center;justify-content:center;font-size:90px;position:relative}
+.about-img-box img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.about-text h2{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--g);margin-bottom:12px}
+.about-text p{font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:12px}
+.vm-box{background:var(--cr);border-radius:var(--r);padding:18px;border-left:4px solid var(--g);margin-top:14px}
+.vm-box h4{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--g3);margin-bottom:6px}
+.vm-box p{font-size:13px;color:var(--ink2);line-height:1.65}
+.vm-box ul{font-size:13px;color:var(--ink2);padding-left:15px;list-style:disc;line-height:1.9}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.ci{display:flex;gap:12px;align-items:flex-start}
+.ci-icon{width:42px;height:42px;background:rgba(29,92,46,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.ci h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.ci p,.ci a{font-size:13px;color:var(--mu);line-height:1.55}
+.ci a{color:var(--g);font-weight:600}
+.map-frame{border-radius:var(--r);overflow:hidden;height:320px;border:1px solid var(--bd)}
+.map-frame iframe{width:100%;height:100%;border:none}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:52px 0 22px}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.fbrand p{font-size:13px;line-height:1.7;margin-bottom:10px}
+.fsoc{display:flex;gap:7px;margin-top:4px}
+.fsoc a{width:34px;height:34px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s}
+.fsoc a:hover{background:var(--au)}
+.fcol h4{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--au2);margin-bottom:12px}
+.fcol ul li{margin-bottom:7px}
+.fcol ul a{font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
+.fcol ul a:hover{color:var(--au2)}
+.fb{padding-top:20px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:8px}
+.fb a{color:var(--au2)}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lb.open{opacity:1;pointer-events:all}
+.lb-inner{position:relative;max-width:88vw;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.lb-img{max-width:100%;max-height:76vh;border-radius:8px;object-fit:contain}
+.lb-vw{width:80vw;max-width:880px;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#000}
+.lb-vw iframe,.lb-vw video{width:100%;height:100%;border:none}
+.lb-cap{color:rgba(255,255,255,.85);font-size:13px;margin-top:12px;text-align:center;max-width:580px;line-height:1.55}
+.lb-cap strong{color:#fff;display:block;font-size:15px;margin-bottom:3px}
+.lb-x{position:fixed;top:18px;right:22px;background:rgba(255,255,255,.15);border:none;color:#fff;width:38px;height:38px;border-radius:50%;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10}
+.lb-arr{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;width:46px;height:46px;border-radius:50%;font-size:21px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .2s}
+.lb-arr:hover{background:rgba(255,255,255,.24)}
+.lb-p{left:18px}.lb-n{right:18px}
+.lb-ctr{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.55);font-size:12px}
+
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mo.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:12px;width:100%;max-width:680px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.25);transform:scale(.95);transition:transform .3s}
+.mo.open .modal{transform:scale(1)}
+.mh{padding:17px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;background:var(--g);color:#fff;flex-shrink:0}
+.mh h3{font-size:15px;font-weight:700}
+.mclose{background:rgba(255,255,255,.15);border:none;color:#fff;width:29px;height:29px;border-radius:50%;font-size:17px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mclose:hover{background:rgba(255,255,255,.3)}
+.mb{padding:20px;overflow-y:auto;flex:1}
+.mf{padding:13px 20px;border-top:1px solid var(--bd);display:flex;justify-content:flex-end;gap:9px;flex-shrink:0}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+label.lbl{display:block;font-size:11px;font-weight:700;color:var(--ink2);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.fi,.fs,.ft{width:100%;padding:8px 11px;border:1.5px solid var(--bd);border-radius:6px;font-size:13.5px;font-family:inherit;color:var(--ink);background:#fff;transition:border-color .2s}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--g);box-shadow:0 0 0 3px rgba(29,92,46,.1)}
+.ft{resize:vertical;min-height:80px}
+.fhint{font-size:11px;color:var(--mu);margin-top:3px}
+.fsec{background:#f9fafb;border:1px solid var(--bd);border-radius:8px;padding:14px;margin-bottom:14px}
+.fsec-t{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:10px}
+.fgrp{margin-bottom:12px}
+
+/* ADMIN BAR */
+.abar{position:fixed;bottom:0;left:0;right:0;z-index:500;background:var(--ink);padding:8px 18px;display:flex;align-items:center;gap:10px;justify-content:space-between;border-top:3px solid var(--au);box-shadow:0 -4px 20px rgba(0,0,0,.3);transform:translateY(100%);transition:transform .4s}
+.abar.on{transform:translateY(0)}
+.abar-l{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.abadge{background:var(--au);color:var(--ink);font-size:11px;font-weight:800;padding:3px 11px;border-radius:4px;letter-spacing:.08em;text-transform:uppercase}
+.abtns{display:flex;gap:5px;flex-wrap:wrap}
+.abtn{display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:5px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);cursor:pointer;transition:all .2s}
+.abtn:hover{background:rgba(255,255,255,.15);color:#fff}
+.abtn.gold{background:var(--au);color:#fff;border-color:transparent}
+
+/* INLINE EDIT hint */
+.edit-hint{display:none;position:fixed;top:72px;left:50%;transform:translateX(-50%);background:var(--au);color:#fff;font-size:12px;font-weight:700;padding:6px 18px;border-radius:20px;z-index:400;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.admin-on .edit-hint.show{display:block}
+
+/* TOAST */
+.toast{position:fixed;top:18px;right:18px;z-index:2000;background:var(--g);color:#fff;padding:11px 18px;border-radius:8px;font-size:13.5px;font-weight:600;box-shadow:0 8px 28px rgba(0,0,0,.18);transform:translateY(-70px);opacity:0;transition:all .4s}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:1024px){.news-grid{grid-template-columns:repeat(2,1fr)}.stat-grid{grid-template-columns:repeat(2,1fr)}.fg{grid-template-columns:1fr 1fr}.about-grid,.tbs-wrap,.side-grid,.contact-grid{grid-template-columns:1fr}.nh-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-menu,.nav-actions .btn-outline{display:none}.news-grid{grid-template-columns:1fr}.topbar-left{display:none}.fg{grid-template-columns:1fr}.fg-row{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,1fr)}.video-grid{grid-template-columns:1fr}}
+
+/* ===== HISTORIS TBS ===== */
+.hist-section{background:linear-gradient(160deg,#0a2211 0%,#0f3320 40%,#0a2211 100%);padding:56px 0;position:relative;overflow:hidden}
+.hist-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234caf6e' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hist-head{text-align:center;margin-bottom:32px;position:relative}
+.hist-head .eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--au2);margin-bottom:8px}
+.hist-head h2{font-family:'Lora',serif;font-size:26px;font-weight:700;color:#fff;margin-bottom:8px}
+.hist-head p{font-size:13px;color:rgba(255,255,255,.5);max-width:560px;margin:0 auto}
+.hist-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.hist-kpi-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:16px 18px;text-align:center;transition:all .25s}
+.hist-kpi-card:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.hkc-val{font-family:'Lora',serif;font-size:24px;font-weight:700;color:var(--au2);line-height:1;margin-bottom:3px}
+.hkc-lbl{font-size:11px;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.04em}
+.hkc-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
+
+.hist-chart-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:22px;margin-bottom:20px;position:relative}
+.hist-chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.hist-chart-title{font-size:13px;font-weight:700;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:7px}
+.hist-chart-title span{font-size:11px;color:rgba(255,255,255,.35);font-weight:400}
+.hist-tab-group{display:flex;border:1px solid rgba(255,255,255,.15);border-radius:7px;overflow:hidden}
+.hist-tab{padding:5px 13px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);background:transparent;border:none;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.hist-tab.on{background:var(--g);color:#fff}
+.hist-tab:not(:last-child){border-right:1px solid rgba(255,255,255,.15)}
+
+.hist-2grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.hist-chart-box canvas{max-height:340px}
+.hist-main-chart canvas{max-height:400px}
+
+.hist-year-table{overflow-x:auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;margin-bottom:20px}
+.htbl{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}
+.htbl th{background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);padding:9px 11px;text-align:right;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08)}
+.htbl th:first-child{text-align:left;position:sticky;left:0;background:#0f3320;z-index:1}
+.htbl td{padding:8px 11px;text-align:right;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.7)}
+.htbl td:first-child{text-align:left;font-weight:600;color:rgba(255,255,255,.85);position:sticky;left:0;background:#0a2211;z-index:1}
+.htbl tr:hover td{background:rgba(255,255,255,.04)}
+.htbl .best{color:#4ade80;font-weight:800}
+.htbl .worst{color:#f87171}
+.htbl .avg-row td{background:rgba(200,146,43,.1);color:var(--au2);font-weight:700;border-top:1px solid rgba(200,146,43,.3)}
+.htbl .avg-row td:first-child{background:rgba(200,146,43,.1)}
+
+.hist-legend{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+.hist-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,.55)}
+.hist-leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+.hist-note{text-align:center;font-size:11px;color:rgba(255,255,255,.3);margin-top:16px;line-height:1.6}
+
+@media(max-width:1024px){.hist-kpi{grid-template-columns:repeat(2,1fr)}.hist-2grid{grid-template-columns:1fr}}
+@media(max-width:768px){.hist-kpi{grid-template-columns:1fr 1fr}.hist-chart-box{padding:14px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+<div class="edit-hint" id="editHint">✏️ Mode edit aktif — klik teks mana saja untuk mengedit langsung</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span>📞 <span data-ed="phone"></span></span>
+      <span>📍 <span data-ed="addr"></span></span>
+      <span>✉️ <span data-ed="email"></span></span>
+    </div>
+    <div class="topbar-right">
+      <a href="https://gapki.id" target="_blank">GAPKI Pusat ↗</a>
+      <a href="https://gapki.id/berita-terkini/" target="_blank">Berita Nasional ↗</a>
+      <a href="#" onclick="openMo('moLogin')" id="adminToggle">🔐 Admin</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#beranda" class="nav-logo">
+      <img id="siteLogo" src="https://i0.wp.com/gapki.id/dir-site/uploads/2023/10/hq_CB_GAPKI_LOGO_.png?fit=400%2C141&ssl=1" alt="GAPKI" onerror="this.style.display='none'">
+      <div class="ndiv"></div>
+      <div class="nlt"><strong data-ed="siteTitle"></strong><span data-ed="siteSubtitle"></span></div>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="#beranda" class="nav-link act">Beranda</a></li>
+      <li class="nav-item"><a href="#berita" class="nav-link">Berita <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="dd"><a href="#berita">Berita Lokal</a><a href="https://gapki.id/berita-terkini/" target="_blank">Berita Nasional ↗</a><a href="https://gapki.id/siaran-pers/" target="_blank">Siaran Pers ↗</a></div>
+      </li>
+      <li class="nav-item"><a href="#harga" class="nav-link">Harga TBS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="dd"><a href="#harga">Data 2026 (Terkini)</a><a href="#historis">Historis 2010–2026</a></div>
+      </li>
+      <li class="nav-item"><a href="#agenda" class="nav-link">Agenda</a></li>
+      <li class="nav-item"><a href="#galeri" class="nav-link">Galeri</a></li>
+      <li class="nav-item"><a href="#tentang" class="nav-link">Tentang</a></li>
+      <li class="nav-item"><a href="#kontak" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://gapki.id/registrasi-anggota/" target="_blank" class="btn btn-outline btn-sm">Daftar Anggota</a>
+      <a href="https://gapki.id/posisi-harga-komoditas/" target="_blank" class="btn btn-primary btn-sm">Market ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-inner"><div class="ticker-label">🔴 Live</div><div class="ticker-track"><div class="ticker-scroll" id="tickerScroll"></div></div></div></div>
+
+<!-- HERO -->
+<div class="hero" id="beranda">
+  <div id="slidesWrap"></div>
+  <button class="hero-arr hero-prev" onclick="changeSlide(-1)">‹</button>
+  <button class="hero-arr hero-next" onclick="changeSlide(1)">›</button>
+  <div class="hero-ctrl" id="heroDots"></div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip"><div class="container"><div class="stat-grid" id="statGrid"></div></div></div>
+
+<!-- BERITA -->
+<section class="section" id="berita">
+  <div class="container">
+    <div class="sec-head"><div class="sec-head-l"><div class="eyebrow" data-ed="newsEyebrow"></div><h2 data-ed="newsHeading"></h2></div><a href="https://gapki.id/berita-terkini/" target="_blank" style="font-size:12px;font-weight:700;color:var(--g)">Semua Berita GAPKI ↗</a></div>
+    <div class="nh-grid">
+      <div class="nh-card">
+        <div class="nh-img"><img id="hnImg" src="" alt="" onerror="this.style.display='none'">🌴</div>
+        <div class="nh-body">
+          <span class="news-tag tag-nat">Nasional</span>
+          <h2 data-ed="hnTitle"></h2>
+          <p data-ed="hnDesc"></p>
+          <div class="news-meta"><strong data-ed="hnDate"></strong><a id="hnLink" href="#" target="_blank" class="btn btn-sm btn-primary" style="margin-left:auto">Baca di GAPKI ↗</a></div>
+        </div>
+      </div>
+      <div class="news-stack" id="miniNews"></div>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+</section>
+
+<!-- TBS -->
+<section class="section section-alt" id="harga">
+  <div class="container">
+    <div class="sec-head"><div class="sec-head-l"><div class="eyebrow" data-ed="tbsEyebrow"></div><h2 data-ed="tbsHeading"></h2></div><span style="font-size:12px;color:var(--mu)" data-ed="tbsSource"></span></div>
+    <div class="tbs-wrap">
+      <div><div class="tbs-tbl-wrap"><table class="tbs-tbl"><thead><tr><th>Bulan</th><th>Minggu I</th><th>Minggu II</th><th>Minggu III</th><th>Minggu IV</th><th>Rata-rata</th><th>vs Thn Lalu</th></tr></thead><tbody id="tbsBody"></tbody></table></div><p style="font-size:11px;color:var(--mu);margin-top:6px" data-ed="tbsNote"></p></div>
+      <div><div class="price-card"><h3 data-ed="pcLabel"></h3><div class="price-big" id="priceNow"></div><div class="price-sub" data-ed="priceSub"></div><div id="priceRows"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIS HARGA TBS -->
+<section class="hist-section" id="historis">
+  <div class="container">
+    <div class="hist-head">
+      <div class="eyebrow">📈 Rekam Jejak Harga</div>
+      <h2>Historis Harga TBS Plasma Sumatera Barat 2010 – 2026</h2>
+      <p>Data rata-rata bulanan Rp/kg · Sumber: Tim Penetapan Harga TBS Plasma Sumbar</p>
+    </div>
+    <div class="hist-kpi">
+      <div class="hist-kpi-card"><div class="hkc-val" id="hkpi-high">—</div><div class="hkc-lbl">Harga Tertinggi</div><div class="hkc-sub" id="hkpi-high-info">—</div></div>
+      <div class="hist-kpi-card"><div class="hkc-val" id="hkpi-low">—</div><div class="hkc-lbl">Harga Terendah</div><div class="hkc-sub" id="hkpi-low-info">—</div></div>
+      <div class="hist-kpi-card"><div class="hkc-val" id="hkpi-avg">—</div><div class="hkc-lbl">Rata-rata 2010–2026</div><div class="hkc-sub">Rp/kg</div></div>
+      <div class="hist-kpi-card"><div class="hkc-val" id="hkpi-cagr">—</div><div class="hkc-lbl">Pertumbuhan CAGR</div><div class="hkc-sub">2010 → 2025</div></div>
+    </div>
+    <div class="hist-chart-box hist-main-chart">
+      <div class="hist-chart-header">
+        <div class="hist-chart-title">📊 Tren Harga Rata-rata Tahunan <span>Rp/kg per tahun</span></div>
+        <div class="hist-tab-group">
+          <button class="hist-tab on" onclick="switchMainChart('bar',this)">Batang</button>
+          <button class="hist-tab" onclick="switchMainChart('line',this)">Garis</button>
+        </div>
+      </div>
+      <canvas id="chartTahunan"></canvas>
+    </div>
+    <div class="hist-2grid">
+      <div class="hist-chart-box">
+        <div class="hist-chart-header"><div class="hist-chart-title">📅 Pola Musiman Bulanan <span>rata-rata 2010–2026</span></div></div>
+        <canvas id="chartBulanan"></canvas>
+      </div>
+      <div class="hist-chart-box">
+        <div class="hist-chart-header"><div class="hist-chart-title">📈 Perubahan Tahunan (YoY) <span>%</span></div></div>
+        <canvas id="chartYoY"></canvas>
+      </div>
+    </div>
+    <div class="hist-chart-box">
+      <div class="hist-chart-header">
+        <div class="hist-chart-title">🗓 Profil Bulanan Per Tahun <span>klik tahun untuk show/hide</span></div>
+        <div style="display:flex;gap:7px">
+          <button class="hist-tab on" onclick="selAllYears(true)" style="border-radius:5px;padding:4px 10px">Semua</button>
+          <button class="hist-tab" onclick="selAllYears(false)" style="border-radius:5px;padding:4px 10px">Reset</button>
+        </div>
+      </div>
+      <div class="hist-legend" id="yearLegend"></div>
+      <canvas id="chartMulti" style="margin-top:14px;max-height:380px"></canvas>
+    </div>
+    <div class="hist-year-table"><table class="htbl" id="histTable"></table></div>
+    <div class="hist-note">★ Data 2026 bersifat sementara (YTD Mei) · Data 2025 lengkap (Jan–Des) · Sumber: Tim Penetapan Harga TBS Plasma Sumbar</div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="section" id="agenda">
+  <div class="container">
+    <div class="sec-head"><div class="sec-head-l"><div class="eyebrow" data-ed="agendaEyebrow"></div><h2 data-ed="agendaHeading"></h2></div></div>
+    <div class="side-grid"><div><div class="agenda-list" id="agendaList"></div></div><div id="pengList"></div></div>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section class="section section-alt" id="galeri">
+  <div class="container">
+    <div class="sec-head"><div class="sec-head-l"><div class="eyebrow" data-ed="galeriEyebrow"></div><h2 data-ed="galeriHeading"></h2></div>
+    <div style="display:flex;gap:7px"><button id="btnAddFoto" class="btn btn-sm btn-primary" style="display:none" onclick="openMo('moFoto')">+ Foto</button><button id="btnAddVideo" class="btn btn-sm btn-gold" style="display:none" onclick="openMo('moVideo')">+ Video</button></div></div>
+    <div class="gtabs"><button class="gtab on" id="gtabF" onclick="swGaleri('foto')">📷 Foto <span id="fbadge"></span></button><button class="gtab" id="gtabV" onclick="swGaleri('video')">🎬 Video <span id="vbadge"></span></button></div>
+    <div class="gfilt" id="gfilt"></div>
+    <div id="paneFoto"><div class="foto-masonry" id="fotoGrid"></div><p id="fotoEmpty" style="display:none;text-align:center;padding:36px;color:var(--mu)">Belum ada foto.</p></div>
+    <div id="paneVideo" style="display:none"><div class="video-grid" id="videoGrid"></div><p id="videoEmpty" style="display:none;text-align:center;padding:36px;color:var(--mu)">Belum ada video.</p></div>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section class="section" id="tentang">
+  <div class="container">
+    <div class="sec-head"><div class="sec-head-l"><div class="eyebrow" data-ed="tentangEyebrow"></div><h2 data-ed="tentangHeading"></h2></div><a href="https://gapki.id/apa-itu-gapki/" target="_blank" style="font-size:12px;font-weight:700;color:var(--g)">Profil GAPKI Pusat ↗</a></div>
+    <div class="about-grid">
+      <div class="about-img-box" id="aboutImgBox"><img id="aboutImg" src="" alt="" style="display:none"><span id="aboutIcon">🌿</span></div>
+      <div class="about-text">
+        <h2 data-ed="aboutTitle"></h2>
+        <p data-ed="aboutP1"></p>
+        <p data-ed="aboutP2"></p>
+        <div class="vm-box"><h4>🎯 Visi</h4><p data-ed="aboutVisi"></p></div>
+        <div class="vm-box" style="margin-top:10px;border-left-color:var(--au)"><h4>📋 Misi</h4><ul id="aboutMisi"></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="section section-alt" id="kontak">
+  <div class="container">
+    <div class="sec-head"><div class="sec-head-l"><div class="eyebrow" data-ed="kontakEyebrow"></div><h2 data-ed="kontakHeading"></h2></div></div>
+    <div class="contact-grid"><div class="contact-info" id="contactList"></div><div class="map-frame"><iframe id="mapIframe" src="https://maps.google.com/maps?q=Jl.+Ujung+Gurun,+Padang&output=embed&z=16" allowfullscreen loading="lazy"></iframe></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fg">
+      <div class="fbrand"><p data-ed="footerDesc"></p>
+        <div class="fsoc"><a id="fFb" href="#" target="_blank">f</a><a id="fIg" href="#" target="_blank">📷</a><a id="fYt" href="#" target="_blank">▶</a><a id="fWa" href="#" target="_blank">💬</a></div>
+      </div>
+      <div class="fcol"><h4 data-ed="fNavTitle"></h4><ul><li><a href="#beranda">🏠 Beranda</a></li><li><a href="#berita">📰 Berita</a></li><li><a href="#harga">📊 Harga TBS</a></li><li><a href="#historis">📈 Historis 2010–2026</a></li><li><a href="#agenda">📅 Agenda</a></li><li><a href="#galeri">📷 Galeri</a></li><li><a href="#tentang">ℹ️ Tentang</a></li></ul></div>
+      <div class="fcol"><h4 data-ed="fGapkiTitle"></h4><ul><li><a href="https://gapki.id/berita-terkini/" target="_blank">Berita Terkini ↗</a></li><li><a href="https://gapki.id/siaran-pers/" target="_blank">Siaran Pers ↗</a></li><li><a href="https://gapki.id/riset-kelapa-sawit/" target="_blank">Riset Sawit ↗</a></li><li><a href="https://gapki.id/regulasi/" target="_blank">Regulasi ↗</a></li><li><a href="https://gapki.id/posisi-harga-komoditas/" target="_blank">Market Harga ↗</a></li></ul></div>
+      <div class="fcol"><h4 data-ed="fLinkTitle"></h4><ul><li><a href="https://www.pertanian.go.id" target="_blank">Kementan RI ↗</a></li><li><a href="https://bpdpks.or.id" target="_blank">BPDPKS ↗</a></li><li><a href="https://www.rspo.org" target="_blank">RSPO ↗</a></li><li><a href="https://sumbar.bps.go.id" target="_blank">BPS Sumbar ↗</a></li><li><a href="https://sumbarprov.go.id" target="_blank">Pemprov Sumbar ↗</a></li></ul></div>
+    </div>
+    <div class="fb">
+      <span data-ed="footerCopy"></span>
+      <span style="display:flex;gap:16px;align-items:center">
+        <span data-ed="footerAddr"></span>
+        <span id="footerVisitor" style="background:rgba(255,255,255,.1);padding:3px 10px;border-radius:12px;font-size:11px;color:rgba(255,255,255,.5)">👁 0 pengunjung</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ADMIN BAR -->
+<div class="abar" id="abar">
+  <div class="abar-l">
+    <div class="abadge">⚙️ Admin</div>
+    <div class="abtns">
+      <button class="abtn gold" onclick="openMo('moBerita')">+ Berita</button>
+      <button class="abtn" onclick="openMo('moAgenda')">+ Agenda</button>
+      <button class="abtn" onclick="openMo('moPeng')">+ Pengumuman</button>
+      <button class="abtn" onclick="openMo('moFoto')">📷 + Foto</button>
+      <button class="abtn" onclick="openMo('moVideo')">🎬 + Video</button>
+      <button class="abtn" onclick="openMo('moTBS')">📊 TBS</button>
+      <button class="abtn" onclick="openMo('moTicker')">📡 Ticker</button>
+      <button class="abtn gold" onclick="openMo('moSite')">⚙️ Pengaturan Situs</button>
+      <button class="abtn" onclick="openMo('moStats')">📈 Statistik</button>
+      <button class="abtn" onclick="openMo('moSlider')">🖼 Slider</button>
+      <button class="abtn" onclick="openMo('moAbout')">ℹ️ Tentang</button>
+      <button class="abtn" onclick="openMo('moContact')">📞 Kontak</button>
+      <button class="abtn" onclick="openMo('moTexts')">🖊 Edit Semua Teks</button>
+    </div>
+  </div>
+  <button class="abtn" onclick="logout()">🔓 Keluar</button>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLb(event)">
+  <button class="lb-x" onclick="closeLb()">×</button>
+  <button class="lb-arr lb-p" onclick="lbNav(-1);event.stopPropagation()">‹</button>
+  <button class="lb-arr lb-n" onclick="lbNav(1);event.stopPropagation()">›</button>
+  <div class="lb-inner" id="lbInner"></div>
+  <div class="lb-ctr" id="lbCtr"></div>
+</div>
+
+<!-- ====== MODALS ====== -->
+<!-- LOGIN -->
+<div class="mo" id="moLogin"><div class="modal" style="max-width:380px">
+  <div class="mh"><h3>🔐 Login Admin</h3><button class="mclose" onclick="closeMo('moLogin')">×</button></div>
+  <div class="mb">
+    <div class="fgrp"><label class="lbl">Username</label><input class="fi" id="lusr" placeholder="admin"></div>
+    <div class="fgrp"><label class="lbl">Password</label><input type="password" class="fi" id="lpwd" placeholder="••••••••"><div class="fhint">Demo: <strong>admin</strong> / <strong>gapki2026</strong></div></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moLogin')">Batal</button><button class="btn btn-primary" onclick="doLogin()">Masuk →</button></div>
+</div></div>
+
+<!-- EDIT SEMUA TEKS -->
+<div class="mo" id="moTexts"><div class="modal" style="max-width:760px">
+  <div class="mh"><h3>🖊 Edit Semua Teks Website</h3><button class="mclose" onclick="closeMo('moTexts')">×</button></div>
+  <div class="mb" id="allTextsForm"></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moTexts')">Batal</button><button class="btn btn-primary" onclick="saveAllTexts()">💾 Simpan Semua</button></div>
+</div></div>
+
+<!-- PENGATURAN SITUS -->
+<div class="mo" id="moSite"><div class="modal">
+  <div class="mh"><h3>⚙️ Pengaturan Situs</h3><button class="mclose" onclick="closeMo('moSite')">×</button></div>
+  <div class="mb">
+    <div class="fsec"><div class="fsec-t">Identitas & Navbar</div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Nama Situs</label><input class="fi" id="s-siteTitle"></div><div class="fgrp"><label class="lbl">Tagline</label><input class="fi" id="s-siteSubtitle"></div></div>
+      <div class="fgrp"><label class="lbl">URL Logo</label><input type="url" class="fi" id="s-logo"></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Topbar — Kontak</div>
+      <div class="fgrp"><label class="lbl">Nomor Telepon</label><input class="fi" id="s-phone"></div>
+      <div class="fgrp"><label class="lbl">Alamat (topbar)</label><input class="fi" id="s-addr"></div>
+      <div class="fgrp"><label class="lbl">Email (topbar)</label><input class="fi" id="s-email"></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Seksi Harga TBS</div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Kecil TBS</label><input class="fi" id="s-tbsEyebrow"></div><div class="fgrp"><label class="lbl">Judul Seksi TBS</label><input class="fi" id="s-tbsHeading"></div></div>
+      <div class="fgrp"><label class="lbl">Sumber Data TBS</label><input class="fi" id="s-tbsSource"></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Kartu Harga</label><input class="fi" id="s-pcLabel"></div><div class="fgrp"><label class="lbl">Subjudul Kartu Harga</label><input class="fi" id="s-priceSub"></div></div>
+      <div class="fgrp"><label class="lbl">Catatan Bawah Tabel</label><input class="fi" id="s-tbsNote"></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Seksi Berita / Agenda / Galeri / Tentang / Kontak</div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Berita</label><input class="fi" id="s-newsEyebrow"></div><div class="fgrp"><label class="lbl">Judul Berita</label><input class="fi" id="s-newsHeading"></div></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Agenda</label><input class="fi" id="s-agendaEyebrow"></div><div class="fgrp"><label class="lbl">Judul Agenda</label><input class="fi" id="s-agendaHeading"></div></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Galeri</label><input class="fi" id="s-galeriEyebrow"></div><div class="fgrp"><label class="lbl">Judul Galeri</label><input class="fi" id="s-galeriHeading"></div></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Tentang</label><input class="fi" id="s-tentangEyebrow"></div><div class="fgrp"><label class="lbl">Judul Tentang</label><input class="fi" id="s-tentangHeading"></div></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Label Kontak</label><input class="fi" id="s-kontakEyebrow"></div><div class="fgrp"><label class="lbl">Judul Kontak</label><input class="fi" id="s-kontakHeading"></div></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Berita Utama (Hero)</div>
+      <div class="fgrp"><label class="lbl">Judul</label><input class="fi" id="s-hnTitle"></div>
+      <div class="fgrp"><label class="lbl">Deskripsi</label><textarea class="ft" id="s-hnDesc" style="min-height:60px"></textarea></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Tanggal</label><input class="fi" id="s-hnDate"></div><div class="fgrp"><label class="lbl">URL Gambar</label><input type="url" class="fi" id="s-hnImg"></div></div>
+      <div class="fgrp"><label class="lbl">Link Baca</label><input type="url" class="fi" id="s-hnLink"></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Halaman Tentang</div>
+      <div class="fgrp"><label class="lbl">Judul Utama</label><input class="fi" id="s-aboutTitle"></div>
+      <div class="fgrp"><label class="lbl">Paragraf 1</label><textarea class="ft" id="s-aboutP1"></textarea></div>
+      <div class="fgrp"><label class="lbl">Paragraf 2</label><textarea class="ft" id="s-aboutP2"></textarea></div>
+      <div class="fgrp"><label class="lbl">Visi</label><textarea class="ft" id="s-aboutVisi" style="min-height:60px"></textarea></div>
+      <div class="fgrp"><label class="lbl">URL Foto Tentang</label><input type="url" class="fi" id="s-aboutImg"><div class="fhint">Kosongkan untuk tampilkan ikon 🌿</div></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Footer</div>
+      <div class="fgrp"><label class="lbl">Deskripsi Footer</label><textarea class="ft" id="s-footerDesc" style="min-height:60px"></textarea></div>
+      <div class="fgrp"><label class="lbl">Teks Copyright</label><input class="fi" id="s-footerCopy"></div>
+      <div class="fgrp"><label class="lbl">Alamat di Footer</label><input class="fi" id="s-footerAddr"></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Judul Kol. Navigasi</label><input class="fi" id="s-fNavTitle"></div><div class="fgrp"><label class="lbl">Judul Kol. GAPKI Pusat</label><input class="fi" id="s-fGapkiTitle"></div></div>
+      <div class="fgrp"><label class="lbl">Judul Kol. Tautan</label><input class="fi" id="s-fLinkTitle"></div>
+    </div>
+    <div class="fsec"><div class="fsec-t">Media Sosial & Maps</div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Facebook URL</label><input type="url" class="fi" id="s-fb"></div><div class="fgrp"><label class="lbl">Instagram URL</label><input type="url" class="fi" id="s-ig"></div></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">YouTube URL</label><input type="url" class="fi" id="s-yt"></div><div class="fgrp"><label class="lbl">WhatsApp (nomor)</label><input class="fi" id="s-wa" placeholder="628116684953"></div></div>
+      <div class="fgrp"><label class="lbl">Alamat Google Maps</label><input class="fi" id="s-maps"></div>
+    </div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moSite')">Batal</button><button class="btn btn-primary" onclick="saveSite()">💾 Simpan</button></div>
+</div></div>
+
+<!-- STATISTIK -->
+<div class="mo" id="moStats"><div class="modal" style="max-width:580px">
+  <div class="mh"><h3>📊 Edit Statistik</h3><button class="mclose" onclick="closeMo('moStats')">×</button></div>
+  <div class="mb"><div id="statsForm"></div><button class="btn btn-outline btn-sm" onclick="addStat()" style="margin-top:7px">+ Tambah</button></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moStats')">Batal</button><button class="btn btn-primary" onclick="saveStats()">💾 Simpan</button></div>
+</div></div>
+
+<!-- SLIDER -->
+<div class="mo" id="moSlider"><div class="modal">
+  <div class="mh"><h3>🖼 Edit Slider</h3><button class="mclose" onclick="closeMo('moSlider')">×</button></div>
+  <div class="mb"><div id="sliderForm"></div><button class="btn btn-outline btn-sm" onclick="addSlide()" style="margin-top:7px">+ Tambah Slide</button></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moSlider')">Batal</button><button class="btn btn-primary" onclick="saveSlider()">💾 Simpan</button></div>
+</div></div>
+
+<!-- ABOUT -->
+<div class="mo" id="moAbout"><div class="modal">
+  <div class="mh"><h3>ℹ️ Edit Tentang</h3><button class="mclose" onclick="closeMo('moAbout')">×</button></div>
+  <div class="mb">
+    <div class="fgrp"><label class="lbl">Judul</label><input class="fi" id="ab-t"></div>
+    <div class="fgrp"><label class="lbl">Paragraf 1</label><textarea class="ft" id="ab-p1"></textarea></div>
+    <div class="fgrp"><label class="lbl">Paragraf 2</label><textarea class="ft" id="ab-p2"></textarea></div>
+    <div class="fgrp"><label class="lbl">Visi</label><textarea class="ft" id="ab-v" style="min-height:60px"></textarea></div>
+    <div class="fgrp"><label class="lbl">Misi (satu per baris)</label><textarea class="ft" id="ab-m" style="min-height:100px"></textarea></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moAbout')">Batal</button><button class="btn btn-primary" onclick="saveAbout()">💾 Simpan</button></div>
+</div></div>
+
+<!-- KONTAK -->
+<div class="mo" id="moContact"><div class="modal">
+  <div class="mh"><h3>📞 Edit Kontak</h3><button class="mclose" onclick="closeMo('moContact')">×</button></div>
+  <div class="mb"><div id="contactForm"></div><button class="btn btn-outline btn-sm" onclick="addContact()" style="margin-top:7px">+ Tambah Item</button></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moContact')">Batal</button><button class="btn btn-primary" onclick="saveContact()">💾 Simpan</button></div>
+</div></div>
+
+<!-- BERITA -->
+<div class="mo" id="moBerita"><div class="modal">
+  <div class="mh"><h3 id="bTitle">📰 Berita</h3><button class="mclose" onclick="closeMo('moBerita')">×</button></div>
+  <div class="mb">
+    <input type="hidden" id="bId">
+    <div class="fgrp"><label class="lbl">Judul *</label><input class="fi" id="bJudul"></div>
+    <div class="fg-row"><div class="fgrp"><label class="lbl">Kategori</label><select class="fs" id="bKat"><option value="tag-sb">Sumatera Barat</option><option value="tag-nat">Nasional</option><option value="tag-hrg">Harga & Pasar</option><option value="tag-kb">Kebijakan</option><option value="tag-env">Lingkungan</option><option value="tag-eks">Ekspor</option></select></div><div class="fgrp"><label class="lbl">Tanggal</label><input type="date" class="fi" id="bTgl"></div></div>
+    <div class="fgrp"><label class="lbl">Ringkasan *</label><textarea class="ft" id="bExc"></textarea></div>
+    <div class="fgrp"><label class="lbl">Isi Lengkap</label><textarea class="ft" id="bIsi" style="min-height:110px"></textarea></div>
+    <div class="fg-row"><div class="fgrp"><label class="lbl">URL Gambar</label><input type="url" class="fi" id="bGbr"></div><div class="fgrp"><label class="lbl">Link Sumber</label><input type="url" class="fi" id="bLnk"></div></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moBerita')">Batal</button><button class="btn btn-primary" onclick="saveBerita()">💾 Simpan</button></div>
+</div></div>
+
+<!-- AGENDA -->
+<div class="mo" id="moAgenda"><div class="modal" style="max-width:500px">
+  <div class="mh"><h3 id="agTitle">📅 Agenda</h3><button class="mclose" onclick="closeMo('moAgenda')">×</button></div>
+  <div class="mb">
+    <input type="hidden" id="agId">
+    <div class="fgrp"><label class="lbl">Nama Kegiatan *</label><input class="fi" id="agJdl"></div>
+    <div class="fg-row"><div class="fgrp"><label class="lbl">Tanggal *</label><input type="date" class="fi" id="agTgl"></div><div class="fgrp"><label class="lbl">Waktu</label><input type="time" class="fi" id="agWkt"></div></div>
+    <div class="fgrp"><label class="lbl">Lokasi</label><input class="fi" id="agLok"></div>
+    <div class="fgrp"><label class="lbl">Keterangan</label><textarea class="ft" id="agKet" style="min-height:60px"></textarea></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moAgenda')">Batal</button><button class="btn btn-primary" onclick="saveAgenda()">💾 Simpan</button></div>
+</div></div>
+
+<!-- PENGUMUMAN -->
+<div class="mo" id="moPeng"><div class="modal" style="max-width:500px">
+  <div class="mh"><h3 id="pgTitle">📢 Pengumuman</h3><button class="mclose" onclick="closeMo('moPeng')">×</button></div>
+  <div class="mb">
+    <input type="hidden" id="pgId">
+    <div class="fgrp"><label class="lbl">Judul *</label><input class="fi" id="pgJdl"></div>
+    <div class="fgrp"><label class="lbl">Isi *</label><textarea class="ft" id="pgIsi"></textarea></div>
+    <div class="fgrp"><label class="lbl">Tanggal</label><input type="date" class="fi" id="pgTgl"></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moPeng')">Batal</button><button class="btn btn-primary" onclick="savePeng()">💾 Simpan</button></div>
+</div></div>
+
+<!-- FOTO -->
+<div class="mo" id="moFoto"><div class="modal">
+  <div class="mh"><h3 id="fTitle">📷 Foto</h3><button class="mclose" onclick="closeMo('moFoto')">×</button></div>
+  <div class="mb">
+    <input type="hidden" id="fId">
+    <div class="fgrp"><label class="lbl">Judul *</label><input class="fi" id="fJdl"></div>
+    <div class="fg-row"><div class="fgrp"><label class="lbl">Album</label><select class="fs" id="fAlb"><option>Rapat & Pertemuan</option><option>Seminar & Workshop</option><option>Kunjungan Lapangan</option><option>Pelatihan GAP</option><option>PSR & Peremajaan</option><option>HUT & Seremonial</option><option>Lainnya</option></select></div><div class="fgrp"><label class="lbl">Tanggal</label><input type="date" class="fi" id="fTgl"></div></div>
+    <div class="fgrp"><label class="lbl">URL Foto</label><input type="url" class="fi" id="fUrl" placeholder="https://..."></div>
+    <div class="fgrp"><label class="lbl">Ikon Pengganti</label><input class="fi" id="fIkon" maxlength="4" value="🌴"></div>
+    <div class="fgrp"><label class="lbl">Keterangan</label><textarea class="ft" id="fKet" style="min-height:60px"></textarea></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moFoto')">Batal</button><button class="btn btn-primary" onclick="saveFoto()">💾 Simpan</button></div>
+</div></div>
+
+<!-- VIDEO -->
+<div class="mo" id="moVideo"><div class="modal">
+  <div class="mh"><h3 id="vTitle">🎬 Video</h3><button class="mclose" onclick="closeMo('moVideo')">×</button></div>
+  <div class="mb">
+    <input type="hidden" id="vId">
+    <div class="fgrp"><label class="lbl">Judul *</label><input class="fi" id="vJdl"></div>
+    <div class="fg-row"><div class="fgrp"><label class="lbl">Kategori</label><select class="fs" id="vKat"><option>Rapat & Pertemuan</option><option>Seminar & Workshop</option><option>Kunjungan Lapangan</option><option>Pelatihan GAP</option><option>PSR & Peremajaan</option><option>HUT & Seremonial</option><option>Lainnya</option></select></div><div class="fgrp"><label class="lbl">Tanggal</label><input type="date" class="fi" id="vTgl"></div></div>
+    <div class="fgrp"><label class="lbl">Jenis</label><select class="fs" id="vJenis" onchange="togVid()"><option value="youtube">YouTube</option><option value="url">URL MP4</option></select></div>
+    <div id="vYtWrap" class="fgrp"><label class="lbl">YouTube ID / URL</label><input class="fi" id="vYt"></div>
+    <div id="vUrlWrap" class="fgrp" style="display:none"><label class="lbl">URL MP4</label><input type="url" class="fi" id="vUrl"></div>
+    <div class="fg-row"><div class="fgrp"><label class="lbl">Thumbnail URL</label><input type="url" class="fi" id="vThumb"></div><div class="fgrp"><label class="lbl">Durasi</label><input class="fi" id="vDur" placeholder="12:45"></div></div>
+    <div class="fgrp"><label class="lbl">Deskripsi</label><textarea class="ft" id="vDesc" style="min-height:60px"></textarea></div>
+  </div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moVideo')">Batal</button><button class="btn btn-primary" onclick="saveVideo()">💾 Simpan</button></div>
+</div></div>
+
+<!-- TBS -->
+<div class="mo" id="moTBS"><div class="modal">
+  <div class="mh"><h3>📊 Update Harga TBS</h3><button class="mclose" onclick="closeMo('moTBS')">×</button></div>
+  <div class="mb"><div id="tbsForm"></div><button class="btn btn-outline btn-sm" onclick="addTBSRow()" style="margin-top:7px">+ Tambah Bulan</button></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moTBS')">Batal</button><button class="btn btn-primary" onclick="saveTBS()">💾 Simpan</button></div>
+</div></div>
+
+<!-- TICKER -->
+<div class="mo" id="moTicker"><div class="modal" style="max-width:520px">
+  <div class="mh"><h3>📡 Edit Ticker</h3><button class="mclose" onclick="closeMo('moTicker')">×</button></div>
+  <div class="mb"><div id="tickerForm"></div><button class="btn btn-outline btn-sm" onclick="addTick()" style="margin-top:7px">+ Pesan</button></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moTicker')">Batal</button><button class="btn btn-primary" onclick="saveTicker()">💾 Simpan</button></div>
+</div></div>
+
+<!-- READ -->
+<div class="mo" id="moRead"><div class="modal" style="max-width:680px">
+  <div class="mh"><h3 id="readT">Berita</h3><button class="mclose" onclick="closeMo('moRead')">×</button></div>
+  <div class="mb"><div id="readC"></div></div>
+  <div class="mf"><button class="btn btn-outline" onclick="closeMo('moRead')">Tutup</button><a id="readLnk" href="#" target="_blank" class="btn btn-primary" style="display:none">Baca di GAPKI ↗</a></div>
+</div></div>
+
+<script>
+/* ===== STORAGE ===== */
+const S={
+  l(k,d){try{const v=localStorage.getItem('gv5_'+k);return v?JSON.parse(v):d}catch{return d}},
+  s(k,v){try{localStorage.setItem('gv5_'+k,JSON.stringify(v))}catch{}}
+};
+
+/* ===== TEXT FIELDS — every text that appears on the website ===== */
+const TEXT_DEFS = {
+  // topbar
+  phone:       '0811-668-4953',
+  addr:        'Jl. Ujung Gurun, Padang, Sumatera Barat',
+  email:       'gapki.sumbar@gapki.id',
+  // navbar
+  siteTitle:   'GAPKI Sumatera Barat',
+  siteSubtitle:'Gabungan Pengusaha Kelapa Sawit Indonesia',
+  // section eyebrows & headings
+  newsEyebrow: 'Berita & Informasi',
+  newsHeading: 'Berita Terkini',
+  tbsEyebrow:  'Data Resmi',
+  tbsHeading:  'Harga TBS Plasma Sumatera Barat',
+  tbsSource:   'Sumber: Tim Penetapan Harga TBS Plasma Sumbar',
+  tbsNote:     '★ Harga dalam Rp/kg · Data 2026 (YTD Mei)',
+  pcLabel:     '📊 Update Harga',
+  priceSub:    'Rp/kg · Mei 2026 (rata-rata)',
+  agendaEyebrow:'Kegiatan & Informasi',
+  agendaHeading:'Agenda & Pengumuman',
+  galeriEyebrow:'Dokumentasi',
+  galeriHeading:'Galeri Foto & Video Kegiatan',
+  tentangEyebrow:'Profil Organisasi',
+  tentangHeading:'Tentang GAPKI Cabang Sumatera Barat',
+  kontakEyebrow:'Hubungi Kami',
+  kontakHeading:'Sekretariat GAPKI Sumbar',
+  // hero news
+  hnTitle:     '7 Ancaman Besar Industri Sawit Indonesia',
+  hnDesc:      'GAPKI mengidentifikasi tujuh tantangan struktural yang mengancam daya saing industri sawit nasional — dari tekanan regulasi EUDR hingga kompetisi minyak nabati substitusi.',
+  hnDate:      '12 Mei 2026',
+  // about
+  aboutTitle:  'Memperjuangkan Industri Sawit yang Adil & Berkelanjutan',
+  aboutP1:     'GAPKI Cabang Sumatera Barat adalah organisasi profesi resmi yang mewadahi pengusaha kelapa sawit di Provinsi Sumatera Barat. Berdiri sebagai perpanjangan tangan GAPKI Pusat di daerah, kami berkomitmen untuk memperjuangkan kepentingan anggota, mendorong praktik perkebunan berkelanjutan, dan berkontribusi pada pembangunan ekonomi daerah.',
+  aboutP2:     'Dengan jaringan yang mencakup seluruh kabupaten penghasil sawit di Sumbar — Pasaman Barat, Dharmasraya, Sijunjung, Solok Selatan, dan Pesisir Selatan — GAPKI Sumbar aktif menjadi fasilitator antara industri, pemerintah daerah, dan petani plasma.',
+  aboutVisi:   'Menjadikan industri kelapa sawit Sumatera Barat sebagai motor penggerak ekonomi daerah yang berdaya saing, berkeadilan, dan ramah lingkungan.',
+  // footer
+  footerDesc:  'Gabungan Pengusaha Kelapa Sawit Indonesia Cabang Sumatera Barat — mewakili industri sawit yang berkelanjutan di Ranah Minang.',
+  footerCopy:  '© 2026 GAPKI Cabang Sumatera Barat. Hak Cipta Dilindungi.',
+  footerAddr:  'Jl. Ujung Gurun, Padang · 0811-668-4953 · gapki.id',
+  fNavTitle:   'Navigasi',
+  fGapkiTitle: 'GAPKI Pusat',
+  fLinkTitle:  'Tautan Lain',
+};
+const TEXT_LABELS = {
+  phone:'Nomor Telepon (topbar)',addr:'Alamat (topbar)',email:'Email (topbar)',
+  siteTitle:'Nama Situs (navbar)',siteSubtitle:'Tagline (navbar)',
+  newsEyebrow:'Label Kecil Berita',newsHeading:'Judul Seksi Berita',
+  tbsEyebrow:'Label Kecil TBS',tbsHeading:'Judul Seksi TBS',
+  tbsSource:'Sumber Data TBS',tbsNote:'Catatan di bawah tabel TBS',
+  pcLabel:'Label Kartu Harga',priceSub:'Subjudul Kartu Harga',
+  agendaEyebrow:'Label Kecil Agenda',agendaHeading:'Judul Seksi Agenda',
+  galeriEyebrow:'Label Kecil Galeri',galeriHeading:'Judul Seksi Galeri',
+  tentangEyebrow:'Label Kecil Tentang',tentangHeading:'Judul Seksi Tentang',
+  kontakEyebrow:'Label Kecil Kontak',kontakHeading:'Judul Seksi Kontak',
+  hnTitle:'Judul Berita Utama (Hero)',hnDesc:'Deskripsi Berita Utama',hnDate:'Tanggal Berita Utama',
+  aboutTitle:'Judul Halaman Tentang',aboutP1:'Tentang — Paragraf 1',aboutP2:'Tentang — Paragraf 2',
+  aboutVisi:'Visi Organisasi',
+  footerDesc:'Deskripsi Footer',footerCopy:'Teks Copyright',footerAddr:'Alamat di Footer',
+  fNavTitle:'Judul Kolom Navigasi',fGapkiTitle:'Judul Kolom GAPKI Pusat',fLinkTitle:'Judul Kolom Tautan',
+};
+
+let texts = S.l('texts', {...TEXT_DEFS});
+
+/* apply all [data-ed] elements */
+function applyTexts(){
+  document.querySelectorAll('[data-ed]').forEach(el=>{
+    const k=el.getAttribute('data-ed');
+    if(texts[k]!==undefined) el.textContent=texts[k];
+  });
+}
+
+/* ===== SITE CONFIG (non-text settings) ===== */
+const SCFG_DEF={logo:'',fb:'#',ig:'#',yt:'#',wa:'628116684953',maps:'Jl. Ujung Gurun, Padang, Sumatera Barat',hnImg:'',hnLink:'https://gapki.id/berita-terkini/',aboutImg:''};
+let scfg=S.l('scfg',SCFG_DEF);
+
+function applyScfg(){
+  const c=scfg;
+  if(c.logo){const l=document.getElementById('siteLogo');if(l){l.src=c.logo;l.style.display='block';}}
+  document.getElementById('fFb').href=c.fb||'#';
+  document.getElementById('fIg').href=c.ig||'#';
+  document.getElementById('fYt').href=c.yt||'#';
+  document.getElementById('fWa').href=c.wa?`https://wa.me/${c.wa}`:'#';
+  if(c.hnImg){const i=document.getElementById('hnImg');i.src=c.hnImg;i.style.display='block';}
+  document.getElementById('hnLink').href=c.hnLink||'#';
+  if(c.maps){document.getElementById('mapIframe').src=`https://maps.google.com/maps?q=${encodeURIComponent(c.maps)}&output=embed&z=16`;}
+  const ai=document.getElementById('aboutImg');const aico=document.getElementById('aboutIcon');
+  if(c.aboutImg){ai.src=c.aboutImg;ai.style.display='block';if(aico)aico.style.display='none';}
+  else{ai.style.display='none';if(aico)aico.style.display='block';}
+}
+
+/* ===== ALL TEXTS MODAL ===== */
+function buildAllTextsForm(){
+  const el=document.getElementById('allTextsForm');
+  // Group by section
+  const groups=[
+    {title:'Topbar',keys:['phone','addr','email']},
+    {title:'Navbar / Identitas',keys:['siteTitle','siteSubtitle']},
+    {title:'Berita Utama (Hero)',keys:['hnTitle','hnDesc','hnDate']},
+    {title:'Seksi Berita',keys:['newsEyebrow','newsHeading']},
+    {title:'Seksi Harga TBS',keys:['tbsEyebrow','tbsHeading','tbsSource','tbsNote','pcLabel','priceSub']},
+    {title:'Seksi Agenda',keys:['agendaEyebrow','agendaHeading']},
+    {title:'Seksi Galeri',keys:['galeriEyebrow','galeriHeading']},
+    {title:'Seksi Tentang',keys:['tentangEyebrow','tentangHeading','aboutTitle','aboutP1','aboutP2','aboutVisi']},
+    {title:'Seksi Kontak',keys:['kontakEyebrow','kontakHeading']},
+    {title:'Footer',keys:['footerDesc','footerCopy','footerAddr','fNavTitle','fGapkiTitle','fLinkTitle']},
+  ];
+  el.innerHTML=groups.map(g=>`
+    <div style="margin-bottom:18px">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bd)">${g.title}</div>
+      ${g.keys.map(k=>`
+        <div style="margin-bottom:10px">
+          <label class="lbl">${TEXT_LABELS[k]||k}</label>
+          ${(texts[k]||'').length>80||k.includes('P1')||k.includes('P2')||k.includes('Desc')||k.includes('desc')
+            ?`<textarea class="ft" id="tx_${k}" style="min-height:70px">${texts[k]||''}</textarea>`
+            :`<input class="fi" id="tx_${k}" value="${(texts[k]||'').replace(/"/g,'&quot;')}">`
+          }
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function saveAllTexts(){
+  Object.keys(TEXT_DEFS).forEach(k=>{
+    const el=document.getElementById('tx_'+k);
+    if(el) texts[k]=el.value;
+  });
+  S.s('texts',texts);
+  applyTexts();
+  closeMo('moTexts');
+  toast('Semua teks berhasil disimpan ✓');
+}
+
+/* ===== VISITOR COUNTER ===== */
+function initCounter(){
+  let visits=parseInt(localStorage.getItem('gv5_visits')||'0');
+  visits++;
+  localStorage.setItem('gv5_visits',visits);
+  // render counter badge in footer
+  const fb=document.getElementById('footerVisitor');
+  if(fb) fb.textContent='👁 '+visits.toLocaleString('id-ID')+' pengunjung';
+}
+
+/* ===== SAVE SITE ===== */
+function openSite(){
+  const c=scfg,t=texts;
+  // text fields
+  ['siteTitle','siteSubtitle','phone','addr','email',
+   'hnTitle','hnDate',
+   'tbsEyebrow','tbsHeading','tbsSource','tbsNote','pcLabel','priceSub',
+   'newsEyebrow','newsHeading',
+   'agendaEyebrow','agendaHeading',
+   'galeriEyebrow','galeriHeading',
+   'tentangEyebrow','tentangHeading',
+   'kontakEyebrow','kontakHeading',
+   'footerDesc','footerCopy','footerAddr','fNavTitle','fGapkiTitle','fLinkTitle'
+  ].forEach(k=>{const el=document.getElementById('s-'+k);if(el)el.value=t[k]||'';});
+  // textarea fields
+  ['hnDesc','aboutTitle','aboutP1','aboutP2','aboutVisi'].forEach(k=>{
+    const el=document.getElementById('s-'+k);if(el)el.value=t[k]||'';
+  });
+  // scfg fields
+  document.getElementById('s-logo').value=c.logo||'';
+  document.getElementById('s-fb').value=c.fb||'';
+  document.getElementById('s-ig').value=c.ig||'';
+  document.getElementById('s-yt').value=c.yt||'';
+  document.getElementById('s-wa').value=c.wa||'';
+  document.getElementById('s-maps').value=c.maps||'';
+  document.getElementById('s-hnImg').value=c.hnImg||'';
+  document.getElementById('s-hnLink').value=c.hnLink||'';
+  document.getElementById('s-aboutImg').value=c.aboutImg||'';
+}
+function saveSite(){
+  // save ALL text fields from moSite back to texts
+  ['siteTitle','siteSubtitle','phone','addr','email',
+   'hnTitle','hnDesc','hnDate',
+   'tbsEyebrow','tbsHeading','tbsSource','tbsNote','pcLabel','priceSub',
+   'newsEyebrow','newsHeading',
+   'agendaEyebrow','agendaHeading',
+   'galeriEyebrow','galeriHeading',
+   'tentangEyebrow','tentangHeading',
+   'kontakEyebrow','kontakHeading',
+   'aboutTitle','aboutP1','aboutP2','aboutVisi',
+   'footerDesc','footerCopy','footerAddr','fNavTitle','fGapkiTitle','fLinkTitle'
+  ].forEach(k=>{
+    const el=document.getElementById('s-'+k);
+    if(el) texts[k]=el.value;
+  });
+  scfg.logo=document.getElementById('s-logo').value;
+  scfg.fb=document.getElementById('s-fb').value;
+  scfg.ig=document.getElementById('s-ig').value;
+  scfg.yt=document.getElementById('s-yt').value;
+  scfg.wa=document.getElementById('s-wa').value;
+  scfg.maps=document.getElementById('s-maps').value;
+  scfg.hnImg=document.getElementById('s-hnImg').value;
+  scfg.hnLink=document.getElementById('s-hnLink').value;
+  scfg.aboutImg=document.getElementById('s-aboutImg').value;
+  S.s('texts',texts);S.s('scfg',scfg);
+  applyTexts();applyScfg();
+  // also sync about object so misi doesn't get lost
+  ab.title=texts.aboutTitle;ab.p1=texts.aboutP1;ab.p2=texts.aboutP2;ab.visi=texts.aboutVisi;
+  S.s('about',ab);renderAbout();
+  closeMo('moSite');toast('Pengaturan disimpan ✓');
+}
+
+/* ===== STATS ===== */
+const DSTATS=[{num:'47,2 Jt',lbl:'Ton Produksi CPO Nasional 2024'},{num:'Rp 4.013',lbl:'Harga TBS Sumbar Mei 2026 (Rp/kg)'},{num:'78%',lbl:'Perusahaan Bersertifikat ISPO Sumbar'},{num:'42.000 Ha',lbl:'Target PSR Sumbar 2026–2027'}];
+let stats=S.l('stats',DSTATS);
+function renderStats(){
+  document.getElementById('statGrid').innerHTML=stats.map(s=>`<div class="stat-item"><div class="stat-num">${s.num}</div><div class="stat-lbl">${s.lbl}</div></div>`).join('');
+}
+function buildStatsForm(){
+  document.getElementById('statsForm').innerHTML=stats.map((s,i)=>`
+    <div style="display:grid;grid-template-columns:1fr 2fr 32px;gap:8px;margin-bottom:9px;align-items:center">
+      <input class="fi" id="st_${i}_n" value="${s.num}" placeholder="47 Jt">
+      <input class="fi" id="st_${i}_l" value="${s.lbl}" placeholder="Label">
+      <button onclick="rmStat(${i})" class="btn btn-danger btn-sm" style="padding:5px 9px">×</button>
+    </div>`).join('');
+}
+function addStat(){stats.push({num:'—',lbl:'Label baru'});buildStatsForm();}
+function rmStat(i){stats.splice(i,1);buildStatsForm();}
+function saveStats(){
+  stats=stats.map((_,i)=>({num:document.getElementById(`st_${i}_n`)?.value||'',lbl:document.getElementById(`st_${i}_l`)?.value||''}));
+  S.s('stats',stats);closeMo('moStats');renderStats();toast('Statistik diperbarui ✓');
+}
+
+/* ===== SLIDER ===== */
+const DSLIDES=[
+  {badge:'🌴 GAPKI Cabang Sumatera Barat',title:'Membangun Industri Sawit Berkelanjutan di Ranah Minang',desc:'Wadah resmi pengusaha kelapa sawit Sumatera Barat — mendorong produktivitas, keberlanjutan, dan daya saing industri sawit regional.',bg:'linear-gradient(135deg,#0d3318,#1d5c2e)',img:'',btn1:'Tentang Kami',bh1:'#tentang',btn2:'Bergabung',bh2:'https://gapki.id/registrasi-anggota/'},
+  {badge:'📊 Data Harga Terkini',title:'Harga TBS April 2026 Tembus Rp 4.120/kg',desc:'Rekor tertinggi sepanjang sejarah. Simak rekapitulasi harga mingguan selengkapnya.',bg:'linear-gradient(135deg,#2e4a0e,#4a7c1e)',img:'',btn1:'Lihat Data Harga',bh1:'#harga',btn2:'',bh2:''},
+  {badge:'📸 Galeri Kegiatan',title:'Dokumentasi Foto & Video Kegiatan GAPKI Sumbar',desc:'Saksikan momen-momen bersejarah dari rapat, seminar, kunjungan kebun, dan kegiatan anggota.',bg:'linear-gradient(135deg,#1a2c40,#2d5070)',img:'',btn1:'Lihat Galeri',bh1:'#galeri',btn2:'',bh2:''},
+];
+let slides=S.l('slides',DSLIDES);
+let si=0;
+function renderSlider(){
+  const w=document.getElementById('slidesWrap'),d=document.getElementById('heroDots');
+  w.innerHTML='';d.innerHTML='';
+  slides.forEach((s,i)=>{
+    const div=document.createElement('div');div.className='slide'+(i===0?' active':'');
+    div.style.background=s.bg||'var(--g)';
+    div.innerHTML=(s.img?`<img src="${s.img}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35">`:'')
+      +`<div class="slide-ov"></div><div class="slide-ct">
+      <div class="s-badge">${s.badge||''}</div>
+      <h1 class="s-title">${s.title||''}</h1>
+      <p class="s-desc">${s.desc||''}</p>
+      <div class="s-btns">
+        ${s.btn1?`<a href="${s.bh1||'#'}" class="btn btn-primary">${s.btn1}</a>`:''}
+        ${s.btn2?`<a href="${s.bh2||'#'}" class="btn btn-gold">${s.btn2}</a>`:''}
+      </div></div>`;
+    w.appendChild(div);
+    const dot=document.createElement('button');dot.className='hero-dot'+(i===0?' active':'');dot.onclick=()=>goSl(i);d.appendChild(dot);
+  });si=0;
+}
+function goSl(n){
+  const ss=document.querySelectorAll('.slide'),dd=document.querySelectorAll('.hero-dot');
+  if(!ss.length)return;
+  ss[si].classList.remove('active');dd[si]?.classList.remove('active');
+  si=(n+ss.length)%ss.length;
+  ss[si].classList.add('active');dd[si]?.classList.add('active');
+}
+function changeSlide(d){goSl(si+d);}
+setInterval(()=>changeSlide(1),5500);
+
+function buildSliderForm(){
+  document.getElementById('sliderForm').innerHTML=slides.map((s,i)=>`
+    <div class="fsec">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="fsec-t">Slide ${i+1}</div>
+        <button onclick="rmSlide(${i})" class="btn btn-danger btn-sm">Hapus</button>
+      </div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Badge</label><input class="fi" id="sl_${i}_b" value="${s.badge||''}"></div><div class="fgrp"><label class="lbl">Background CSS</label><input class="fi" id="sl_${i}_bg" value="${s.bg||''}"></div></div>
+      <div class="fgrp"><label class="lbl">Judul</label><input class="fi" id="sl_${i}_t" value="${s.title||''}"></div>
+      <div class="fgrp"><label class="lbl">Deskripsi</label><textarea class="ft" id="sl_${i}_d" style="min-height:55px">${s.desc||''}</textarea></div>
+      <div class="fgrp"><label class="lbl">URL Gambar Latar</label><input type="url" class="fi" id="sl_${i}_i" value="${s.img||''}"></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Tombol 1 Teks</label><input class="fi" id="sl_${i}_b1" value="${s.btn1||''}"></div><div class="fgrp"><label class="lbl">Tombol 1 Link</label><input class="fi" id="sl_${i}_bh1" value="${s.bh1||''}"></div></div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Tombol 2 Teks</label><input class="fi" id="sl_${i}_b2" value="${s.btn2||''}"></div><div class="fgrp"><label class="lbl">Tombol 2 Link</label><input class="fi" id="sl_${i}_bh2" value="${s.bh2||''}"></div></div>
+    </div>`).join('');
+}
+function addSlide(){slides.push({badge:'🌴 Badge',title:'Judul Slide',desc:'Deskripsi.',bg:'linear-gradient(135deg,#1d5c2e,#2e7d45)',img:'',btn1:'Pelajari',bh1:'#',btn2:'',bh2:''});buildSliderForm();}
+function rmSlide(i){slides.splice(i,1);buildSliderForm();}
+function saveSlider(){
+  slides=slides.map((_,i)=>({badge:v(`sl_${i}_b`),bg:v(`sl_${i}_bg`),title:v(`sl_${i}_t`),desc:v(`sl_${i}_d`),img:v(`sl_${i}_i`),btn1:v(`sl_${i}_b1`),bh1:v(`sl_${i}_bh1`),btn2:v(`sl_${i}_b2`),bh2:v(`sl_${i}_bh2`)}));
+  S.s('slides',slides);closeMo('moSlider');renderSlider();toast('Slider diperbarui ✓');
+}
+
+/* ===== ABOUT ===== */
+const DAB={title:'Memperjuangkan Industri Sawit yang Adil & Berkelanjutan',p1:'GAPKI Cabang Sumatera Barat adalah organisasi profesi resmi yang mewadahi pengusaha kelapa sawit di Provinsi Sumatera Barat.',p2:'Dengan jaringan yang mencakup seluruh kabupaten penghasil sawit di Sumbar — Pasaman Barat, Dharmasraya, Sijunjung, Solok Selatan, dan Pesisir Selatan.',visi:'Menjadikan industri kelapa sawit Sumatera Barat sebagai motor penggerak ekonomi daerah yang berdaya saing, berkeadilan, dan ramah lingkungan.',misi:['Mewakili dan memperjuangkan kepentingan anggota','Mendorong implementasi ISPO dan sertifikasi keberlanjutan','Memfasilitasi program PSR dan peningkatan produktivitas','Mengadvokasi kebijakan harga TBS yang berkeadilan','Membangun kemitraan petani plasma yang setara']};
+let ab=S.l('about',DAB);
+function renderAbout(){
+  // sync with texts
+  texts.aboutTitle=ab.title;texts.aboutP1=ab.p1;texts.aboutP2=ab.p2;texts.aboutVisi=ab.visi;
+  applyTexts();
+  document.getElementById('aboutMisi').innerHTML=(ab.misi||[]).map(m=>`<li>${m}</li>`).join('');
+}
+function openAbout(){document.getElementById('ab-t').value=ab.title;document.getElementById('ab-p1').value=ab.p1;document.getElementById('ab-p2').value=ab.p2;document.getElementById('ab-v').value=ab.visi;document.getElementById('ab-m').value=(ab.misi||[]).join('\n');}
+function saveAbout(){ab={title:v('ab-t'),p1:v('ab-p1'),p2:v('ab-p2'),visi:v('ab-v'),misi:v('ab-m').split('\n').filter(l=>l.trim())};S.s('about',ab);closeMo('moAbout');renderAbout();toast('Tentang diperbarui ✓');}
+
+/* ===== CONTACT ===== */
+const DCT=[{icon:'📍',title:'Alamat Kantor',val:'Jl. Ujung Gurun, Padang\nSumatera Barat 25111',href:''},{icon:'📞',title:'Telepon / WhatsApp',val:'0811-668-4953',href:'tel:08116684953'},{icon:'✉️',title:'Email',val:'gapki.sumbar@gapki.id',href:'mailto:gapki.sumbar@gapki.id'},{icon:'🕐',title:'Jam Operasional',val:'Senin – Jumat: 08.00 – 17.00 WIB\nSabtu: 08.00 – 13.00 WIB',href:''},{icon:'🌐',title:'Website GAPKI Pusat',val:'https://gapki.id',href:'https://gapki.id'}];
+let contacts=S.l('contacts',DCT);
+function renderContact(){
+  document.getElementById('contactList').innerHTML=contacts.map((c,i)=>`
+    <div class="ci">
+      <div class="ci-icon">${c.icon||'📌'}</div>
+      <div style="flex:1"><h4>${c.title}</h4><p>${c.href?`<a href="${c.href}">${c.val}</a>`:c.val.replace(/\n/g,'<br>')}</p></div>
+      ${isAdmin?`<button onclick="editCt(${i})" class="btn btn-warn btn-sm" style="flex-shrink:0">✏️</button>`:''}
+    </div>`).join('');
+}
+function buildContactForm(){
+  document.getElementById('contactForm').innerHTML=contacts.map((c,i)=>`
+    <div class="fsec" style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:12px;font-weight:700;color:var(--g)">${c.icon} ${c.title}</span>
+        <button onclick="rmCt(${i})" class="btn btn-danger btn-sm">×</button>
+      </div>
+      <div class="fg-row"><div class="fgrp"><label class="lbl">Ikon</label><input class="fi" id="ct_${i}_ic" value="${c.icon||''}" maxlength="4"></div><div class="fgrp"><label class="lbl">Judul</label><input class="fi" id="ct_${i}_t" value="${c.title||''}"></div></div>
+      <div class="fgrp"><label class="lbl">Nilai / Teks</label><textarea class="ft" id="ct_${i}_v" style="min-height:48px">${c.val||''}</textarea></div>
+      <div class="fgrp"><label class="lbl">Link href (kosongkan jika tidak ada)</label><input class="fi" id="ct_${i}_h" value="${c.href||''}"></div>
+    </div>`).join('');
+}
+function addContact(){contacts.push({icon:'📌',title:'Item Baru',val:'',href:''});buildContactForm();}
+function rmCt(i){contacts.splice(i,1);buildContactForm();}
+function editCt(i){buildContactForm();openMo('moContact');}
+function saveContact(){
+  contacts=contacts.map((_,i)=>({icon:v(`ct_${i}_ic`),title:v(`ct_${i}_t`),val:v(`ct_${i}_v`),href:v(`ct_${i}_h`)}));
+  S.s('contacts',contacts);closeMo('moContact');renderContact();toast('Kontak diperbarui ✓');
+}
+
+/* ===== NEWS ===== */
+const CATL={'tag-nat':'Nasional','tag-sb':'Sumatera Barat','tag-hrg':'Harga & Pasar','tag-kb':'Kebijakan','tag-env':'Lingkungan','tag-eks':'Ekspor'};
+const DN=[{id:1,judul:'GAPKI Sumbar & Pemprov Tanda Tangani MoU Jalan Produksi 380 km',excerpt:'Penandatanganan MoU senilai Rp 1,2 triliun mencakup pembukaan jalan produksi di Pasaman Barat, Dharmasraya, Sijunjung, dan Solok Selatan.',isi:'Detail MoU mencakup pembukaan dan pengerasan 380 kilometer jalan produksi.',kategori:'tag-sb',tanggal:'4 Mei 2026',gambar:'',link:''},{id:2,judul:'Workshop EUDR & Traceability',excerpt:'GAPKI Sumbar menyelenggarakan workshop intensif tentang regulasi EUDR bagi 120 perusahaan anggota.',isi:'Workshop berlangsung dua hari di Padang.',kategori:'tag-kb',tanggal:'28 Apr 2026',gambar:'',link:'https://gapki.id/berita-terkini/'},{id:3,judul:'Sekolah Lapang GAP: 3.200 Petani Plasma Terlatih',excerpt:'Program GAP berhasil meningkatkan produktivitas petani plasma rata-rata 22%.',isi:'Sebanyak 3.200 petani plasma mendapatkan pelatihan intensif GAP.',kategori:'tag-sb',tanggal:'2 Mei 2026',gambar:'',link:''},{id:4,judul:'Harga TBS April 2026 Tembus Rp 4.120/kg',excerpt:'Rekor tertinggi. Tim Penetapan Harga TBS mencatat rata-rata April 2026 Rp 4.120/kg.',isi:'Faktor pendorong: menguatnya CPO global.',kategori:'tag-hrg',tanggal:'1 Mei 2026',gambar:'',link:''}];
+let news=S.l('news',DN);
+function renderNews(){
+  const gr=document.getElementById('newsGrid'),mn=document.getElementById('miniNews');
+  gr.innerHTML='';mn.innerHTML='';
+  const s=[...news].sort((a,b)=>new Date(b.tanggal)-new Date(a.tanggal));
+  s.slice(0,4).forEach(n=>{
+    const d=document.createElement('div');d.className='news-mini';
+    d.innerHTML=`<div class="nm-img">${n.gambar?`<img src="${n.gambar}" alt="" onerror="this.style.display='none'">`:''}<span>🌴</span></div>
+    <div><span class="news-tag ${n.kategori}" style="font-size:9px">${CATL[n.kategori]||n.kategori}</span>
+    <h4 onclick="readNews(${n.id})" style="cursor:pointer">${n.judul}</h4>
+    <div class="news-meta">${n.tanggal}
+    ${isAdmin?`<button onclick="editNews(${n.id})" class="btn btn-warn btn-sm" style="padding:2px 6px;font-size:10px;margin-left:auto">✏️</button><button onclick="delNews(${n.id})" class="btn btn-danger btn-sm" style="padding:2px 6px;font-size:10px">×</button>`:''}</div></div>`;
+    mn.appendChild(d);
+  });
+  s.slice(0,6).forEach(n=>{
+    const d=document.createElement('div');d.className='news-card';
+    d.innerHTML=`<div class="nc-img">${n.gambar?`<img src="${n.gambar}" alt="" onerror="this.style.display='none'">`:''}<span>🌴</span></div>
+    <div class="nc-body"><span class="news-tag ${n.kategori}">${CATL[n.kategori]||n.kategori}</span>
+    <h3>${n.judul}</h3><p>${n.excerpt}</p>
+    <div class="news-meta" style="justify-content:space-between"><strong>${n.tanggal}</strong>
+    <div style="display:flex;gap:5px">
+    ${isAdmin?`<button onclick="editNews(${n.id})" class="btn btn-warn btn-sm">✏️</button><button onclick="delNews(${n.id})" class="btn btn-danger btn-sm">Hapus</button>`:''}
+    ${n.link?`<a href="${n.link}" target="_blank" class="btn btn-primary btn-sm">Baca ↗</a>`:`<button onclick="readNews(${n.id})" class="btn btn-outline btn-sm">Selengkapnya</button>`}
+    </div></div></div>`;
+    gr.appendChild(d);
+  });
+}
+function editNews(id){
+  const n=news.find(x=>x.id===id);if(!n)return;
+  document.getElementById('bTitle').textContent='✏️ Edit Berita';
+  document.getElementById('bId').value=id;
+  document.getElementById('bJudul').value=n.judul;document.getElementById('bExc').value=n.excerpt;
+  document.getElementById('bIsi').value=n.isi||'';document.getElementById('bKat').value=n.kategori;
+  document.getElementById('bTgl').value=n.tanggal;document.getElementById('bGbr').value=n.gambar||'';
+  document.getElementById('bLnk').value=n.link||'';openMo('moBerita');
+}
+function readNews(id){
+  const n=news.find(x=>x.id===id);if(!n)return;
+  document.getElementById('readT').textContent=n.judul;
+  const el=document.getElementById('readLnk');
+  if(n.link){el.href=n.link;el.style.display='inline-flex';}else el.style.display='none';
+  document.getElementById('readC').innerHTML=`<span class="news-tag ${n.kategori}" style="margin-bottom:12px;display:inline-block">${CATL[n.kategori]||n.kategori}</span>
+  <p style="font-size:12px;color:var(--mu);margin-bottom:14px">📅 ${n.tanggal}</p>
+  <p style="font-size:15px;font-weight:500;margin-bottom:14px">${n.excerpt}</p>
+  ${n.isi?n.isi.split('\n').map(p=>`<p style="font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:10px">${p}</p>`).join(''):''}`;
+  openMo('moRead');
+}
+function delNews(id){if(!confirm('Hapus berita?'))return;news=news.filter(x=>x.id!==id);S.s('news',news);renderNews();toast('Berita dihapus');}
+function saveBerita(){
+  const id=parseInt(v('bId'))||0,j=v('bJudul'),ex=v('bExc');
+  if(!j||!ex){toast('Judul dan ringkasan wajib','#dc2626');return;}
+  const item={id:id||Date.now(),judul:j,excerpt:ex,isi:v('bIsi'),kategori:v('bKat'),tanggal:v('bTgl')||new Date().toLocaleDateString('id-ID'),gambar:v('bGbr'),link:v('bLnk')};
+  if(id) news=news.map(x=>x.id===id?item:x);else news.unshift(item);
+  S.s('news',news);closeMo('moBerita');renderNews();toast('Berita disimpan ✓');
+  document.getElementById('bId').value='';document.getElementById('bTitle').textContent='📰 Berita';
+  ['bJudul','bExc','bIsi','bGbr','bLnk'].forEach(x=>document.getElementById(x).value='');
+}
+
+/* ===== AGENDA ===== */
+const MN=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+const DA=[{id:1,judul:'Rapat Anggota Bulanan GAPKI Sumbar',tanggal:'2026-05-20',waktu:'14:00',lokasi:'Sekretariat GAPKI Sumbar',ket:'Pembahasan harga TBS dan update PSR.'},{id:2,judul:'Workshop EUDR & Traceability',tanggal:'2026-05-28',waktu:'08:30',lokasi:'Hotel Pangeran Beach, Padang',ket:'Wajib dihadiri semua perusahaan anggota.'}];
+let agenda=S.l('agenda',DA);
+function renderAgenda(){
+  document.getElementById('agendaList').innerHTML=[...agenda].sort((a,b)=>new Date(a.tanggal)-new Date(b.tanggal)).map(a=>{
+    const d=new Date(a.tanggal);
+    return `<div class="agenda-item"><div class="ag-date"><div class="day">${String(d.getDate()).padStart(2,'0')}</div><div class="mth">${MN[d.getMonth()]} ${d.getFullYear()}</div></div>
+    <div class="ag-body" style="flex:1"><h4>${a.judul}</h4><p>🕐 ${a.waktu||'TBD'} · 📍 ${a.lokasi||'-'}</p>${a.ket?`<p style="margin-top:3px;font-size:12px;color:var(--ink2)">${a.ket}</p>`:''}</div>
+    ${isAdmin?`<div style="display:flex;gap:4px;flex-shrink:0"><button onclick="editAg(${a.id})" class="btn btn-warn btn-sm">✏️</button><button onclick="delAg(${a.id})" class="btn btn-danger btn-sm">×</button></div>`:''}</div>`;
+  }).join('');
+}
+function editAg(id){const a=agenda.find(x=>x.id===id);if(!a)return;document.getElementById('agTitle').textContent='✏️ Edit Agenda';document.getElementById('agId').value=id;document.getElementById('agJdl').value=a.judul;document.getElementById('agTgl').value=a.tanggal;document.getElementById('agWkt').value=a.waktu||'';document.getElementById('agLok').value=a.lokasi||'';document.getElementById('agKet').value=a.ket||'';openMo('moAgenda');}
+function delAg(id){agenda=agenda.filter(x=>x.id!==id);S.s('agenda',agenda);renderAgenda();toast('Agenda dihapus');}
+function saveAgenda(){
+  const id=parseInt(v('agId'))||0,j=v('agJdl'),t=v('agTgl');if(!j||!t){toast('Nama dan tanggal wajib','#dc2626');return;}
+  const item={id:id||Date.now(),judul:j,tanggal:t,waktu:v('agWkt'),lokasi:v('agLok'),ket:v('agKet')};
+  if(id) agenda=agenda.map(x=>x.id===id?item:x);else agenda.push(item);
+  S.s('agenda',agenda);closeMo('moAgenda');renderAgenda();toast('Agenda disimpan ✓');
+  document.getElementById('agId').value='';document.getElementById('agTitle').textContent='📅 Agenda';
+  ['agJdl','agTgl','agWkt','agLok','agKet'].forEach(x=>document.getElementById(x).value='');
+}
+
+/* ===== PENGUMUMAN ===== */
+const DP=[{id:1,judul:'📋 Batas Akhir Iuran Anggota Semester I 2026',isi:'Batas akhir 31 Mei 2026.',tanggal:'2026-05-10'},{id:2,judul:'🎓 Pendaftaran Sekolah Lapang GAP Dibuka',isi:'Kuota terbatas 200 peserta. Hubungi: 0811-668-4953.',tanggal:'2026-05-08'}];
+let peng=S.l('peng',DP);
+function renderPeng(){
+  document.getElementById('pengList').innerHTML=peng.map(p=>`<div class="peng-card"><h4>📢 ${p.judul}
+  ${isAdmin?`<button onclick="editPg(${p.id})" class="btn btn-warn btn-sm" style="padding:2px 6px;font-size:10px;margin-left:auto">✏️</button><button onclick="delPg(${p.id})" class="btn btn-danger btn-sm" style="padding:2px 6px;font-size:10px">×</button>`:''}</h4>
+  <p>${p.isi}</p><div class="pdate">📅 ${p.tanggal}</div></div>`).join('');
+}
+function editPg(id){const p=peng.find(x=>x.id===id);if(!p)return;document.getElementById('pgTitle').textContent='✏️ Edit Pengumuman';document.getElementById('pgId').value=id;document.getElementById('pgJdl').value=p.judul;document.getElementById('pgIsi').value=p.isi;document.getElementById('pgTgl').value=p.tanggal;openMo('moPeng');}
+function delPg(id){peng=peng.filter(x=>x.id!==id);S.s('peng',peng);renderPeng();toast('Pengumuman dihapus');}
+function savePeng(){
+  const id=parseInt(v('pgId'))||0,j=v('pgJdl'),i=v('pgIsi');if(!j||!i){toast('Judul dan isi wajib','#dc2626');return;}
+  const item={id:id||Date.now(),judul:j,isi:i,tanggal:v('pgTgl')||new Date().toLocaleDateString('id-ID')};
+  if(id) peng=peng.map(x=>x.id===id?item:x);else peng.unshift(item);
+  S.s('peng',peng);closeMo('moPeng');renderPeng();toast('Pengumuman disimpan ✓');
+  document.getElementById('pgId').value='';document.getElementById('pgTitle').textContent='📢 Pengumuman';
+  ['pgJdl','pgIsi','pgTgl'].forEach(x=>document.getElementById(x).value='');
+}
+
+/* ===== TBS ===== */
+const DTBS=[{bulan:'Januari',w1:3527.82,w2:3582.50,w3:3591.57,w4:3610.99,avg:3578.22,prev:3211.14},{bulan:'Februari',w1:3745.03,w2:3758.88,w3:3646.93,w4:3623.90,avg:3693.68,prev:3569.95},{bulan:'Maret',w1:3688.21,w2:3778.09,w3:3963.61,w4:4125.52,avg:3888.86,prev:3748.96},{bulan:'April',w1:4079.47,w2:4180.94,w3:4168.80,w4:4049.04,avg:4119.56,prev:3742.68},{bulan:'Mei',w1:4003.75,w2:4022.16,w3:null,w4:null,avg:4012.95,prev:3513.71}];
+let tbs=S.l('tbs',DTBS);
+function renderTBS(){
+  document.getElementById('tbsBody').innerHTML=tbs.map(r=>{
+    const d=r.prev?((r.avg-r.prev)/r.prev*100).toFixed(1):null;
+    const pk=r.avg===Math.max(...tbs.map(x=>x.avg));
+    const b=d!==null?(parseFloat(d)>=0?`<span class="cup">▲ ${d}%</span>`:`<span class="cdn">▼ ${Math.abs(d)}%</span>`):'-';
+    return `<tr><td>${r.bulan}</td><td>${r.w1||'-'}</td><td>${r.w2||'-'}</td><td>${r.w3||'-'}</td><td>${r.w4||'-'}</td><td class="${pk?'peak':''}">${r.avg.toLocaleString('id-ID')}</td><td>${b}</td></tr>`;
+  }).join('');
+  const lt=tbs[tbs.length-1];
+  document.getElementById('priceNow').textContent=lt.avg.toLocaleString('id-ID');
+  document.getElementById('priceRows').innerHTML=tbs.map(r=>`<div class="price-row"><span>${r.bulan}</span><strong>Rp ${r.avg.toLocaleString('id-ID')}</strong></div>`).join('');
+}
+function buildTBSForm(){
+  document.getElementById('tbsForm').innerHTML=tbs.map((r,i)=>`
+    <div style="background:#f9fafb;border:1px solid var(--bd);border-radius:6px;padding:11px;margin-bottom:8px">
+    <div style="font-size:12px;font-weight:700;color:var(--g);margin-bottom:8px">${r.bulan}</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px">
+      <div><label class="lbl" style="font-size:10px">Mgg I</label><input class="fi" style="padding:5px 7px;font-size:12px" id="tb_${i}_w1" value="${r.w1||''}"></div>
+      <div><label class="lbl" style="font-size:10px">Mgg II</label><input class="fi" style="padding:5px 7px;font-size:12px" id="tb_${i}_w2" value="${r.w2||''}"></div>
+      <div><label class="lbl" style="font-size:10px">Mgg III</label><input class="fi" style="padding:5px 7px;font-size:12px" id="tb_${i}_w3" value="${r.w3||''}"></div>
+      <div><label class="lbl" style="font-size:10px">Mgg IV</label><input class="fi" style="padding:5px 7px;font-size:12px" id="tb_${i}_w4" value="${r.w4||''}"></div>
+      <div><label class="lbl" style="font-size:10px">Rata-rata</label><input class="fi" style="padding:5px 7px;font-size:12px" id="tb_${i}_a" value="${r.avg||''}"></div>
+      <div><label class="lbl" style="font-size:10px">vs Thn Lalu</label><input class="fi" style="padding:5px 7px;font-size:12px" id="tb_${i}_p" value="${r.prev||''}"></div>
+    </div></div>`).join('');
+}
+function addTBSRow(){const bm=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];const ex=tbs.map(r=>r.bulan);const nx=bm.find(b=>!ex.includes(b));if(!nx){toast('Semua bulan sudah ada','#dc2626');return;}tbs.push({bulan:nx,w1:null,w2:null,w3:null,w4:null,avg:0,prev:null});buildTBSForm();}
+function saveTBS(){
+  tbs.forEach((_,i)=>{const g=k=>{const val=document.getElementById(`tb_${i}_${k}`)?.value;return val?parseFloat(val):null;};tbs[i].w1=g('w1');tbs[i].w2=g('w2');tbs[i].w3=g('w3');tbs[i].w4=g('w4');tbs[i].avg=g('a')||0;tbs[i].prev=g('p');});
+  S.s('tbs',tbs);closeMo('moTBS');renderTBS();toast('TBS diperbarui ✓');
+}
+
+/* ===== TICKER ===== */
+const DTICK=['Harga TBS Plasma Sumbar Mei 2026: Rp 4.013/kg ▲ +14,2% YoY','CPO Rotterdam: USD 1.087/MT ▲ +6,1%','B40 Biodiesel: Penyerapan FAME 2025 capai 15,6 Juta KL','ISPO Sumbar: 78% Perusahaan Bersertifikat per Mei 2026','Ekspor CPO April 2026: 2,71 Juta MT ▲ +3,8% MoM','PSR Sumbar: 42.000 Ha dalam antrian peremajaan 2026'];
+let ticker=S.l('ticker',DTICK);
+function renderTicker(){document.getElementById('tickerScroll').innerHTML=[...ticker,...ticker].map(m=>`<span>${m}</span>`).join('');}
+function buildTickerForm(){document.getElementById('tickerForm').innerHTML=ticker.map((m,i)=>`<div style="display:flex;gap:7px;margin-bottom:7px;align-items:center"><input class="fi" id="tk_${i}" value="${m}" style="flex:1;font-size:13px"><button onclick="rmTick(${i})" class="btn btn-danger btn-sm">×</button></div>`).join('');}
+function addTick(){ticker.push('Pesan ticker baru...');buildTickerForm();}
+function rmTick(i){ticker.splice(i,1);buildTickerForm();}
+function saveTicker(){ticker=Array.from({length:ticker.length},(_,i)=>document.getElementById(`tk_${i}`)?.value||'').filter(Boolean);S.s('ticker',ticker);closeMo('moTicker');renderTicker();toast('Ticker diperbarui ✓');}
+
+/* ===== GALERI ===== */
+const DFOTO=[{id:1,judul:'Rapat Anggota Mei 2026',album:'Rapat & Pertemuan',tanggal:'2026-05-20',url:'',ikon:'🏛',ket:'Rapat rutin seluruh anggota GAPKI.'},{id:2,judul:'Workshop EUDR',album:'Seminar & Workshop',tanggal:'2026-04-28',url:'',ikon:'📋',ket:'Workshop regulasi EUDR.'},{id:3,judul:'Kunjungan Kebun Plasma',album:'Kunjungan Lapangan',tanggal:'2026-04-10',url:'',ikon:'🌴',ket:'Kunjungan ke kebun PSR.'},{id:4,judul:'Sekolah Lapang GAP',album:'Pelatihan GAP',tanggal:'2026-03-15',url:'',ikon:'🌱',ket:'Pelatihan pemupukan berimbang.'},{id:5,judul:'Penandatanganan MoU',album:'HUT & Seremonial',tanggal:'2026-02-20',url:'',ikon:'🤝',ket:'MoU jalan produksi.'},{id:6,judul:'Forum PSR 2025',album:'Rapat & Pertemuan',tanggal:'2025-11-18',url:'',ikon:'📊',ket:'Forum tahunan PSR.'}];
+const DVIDEO=[{id:1,judul:'Workshop EUDR Sumbar 2026 — Highlight',kat:'Seminar & Workshop',tanggal:'2026-04-28',jenis:'youtube',ytId:'dQw4w9WgXcQ',url:'',thumb:'',durasi:'08:24',desc:'Cuplikan workshop intensif regulasi EUDR.'},{id:2,judul:'Kunjungan Lapangan Kebun PSR',kat:'Kunjungan Lapangan',tanggal:'2026-04-10',jenis:'youtube',ytId:'dQw4w9WgXcQ',url:'',thumb:'',durasi:'05:12',desc:'Dokumentasi kunjungan ke kebun plasma PSR.'}];
+let foto=S.l('foto',DFOTO);let video=S.l('video',DVIDEO);
+let gMode='foto',gAlb='semua';
+let lbItems=[],lbIdx=0;
+
+function swGaleri(m){gMode=m;gAlb='semua';document.getElementById('gtabF').className='gtab'+(m==='foto'?' on':'');document.getElementById('gtabV').className='gtab'+(m==='video'?' on':'');document.getElementById('paneFoto').style.display=m==='foto'?'block':'none';document.getElementById('paneVideo').style.display=m==='video'?'block':'none';bldGFilt();gMode==='foto'?renderFoto():renderVideo();}
+function bldGFilt(){const el=document.getElementById('gfilt');const list=gMode==='foto'?foto:video;const used=[...new Set(list.map(x=>x.album||x.kat))];el.innerHTML='<span>Album:</span><button class="fbtn'+(gAlb==='semua'?' on':'')+'" onclick="setAlb(\'semua\')">Semua</button>'+used.map(a=>`<button class="fbtn${gAlb===a?' on':''}" onclick="setAlb('${a}')">${a}</button>`).join('');}
+function setAlb(a){gAlb=a;bldGFilt();gMode==='foto'?renderFoto():renderVideo();}
+function renderFoto(){
+  const list=gAlb==='semua'?foto:foto.filter(f=>f.album===gAlb);
+  document.getElementById('fbadge').textContent=foto.length;
+  document.getElementById('fotoEmpty').style.display=list.length?'none':'block';
+  document.getElementById('fotoGrid').innerHTML=list.map(f=>`<div class="foto-item" onclick="openLbFoto(${f.id})">
+    ${f.url?`<img src="${f.url}" alt="${f.judul}" onerror="this.style.display='none'">`:''}<div class="foto-ph">${f.ikon||'🌴'}</div>
+    <div class="foto-badge">${f.album||'Umum'}</div>
+    <div class="foto-acts"><button class="foto-abt" onclick="editFoto(event,${f.id})">✏️</button><button class="foto-abt red" onclick="delFoto(event,${f.id})">×</button></div>
+    <div class="foto-ov"><div class="foto-ov-ttl">${f.judul}</div><div class="foto-ov-meta">📅 ${f.tanggal||''} · 📁 ${f.album||''}</div></div>
+  </div>`).join('');
+}
+function renderVideo(){
+  const list=gAlb==='semua'?video:video.filter(v=>v.kat===gAlb);
+  document.getElementById('vbadge').textContent=video.length;
+  document.getElementById('videoEmpty').style.display=list.length?'none':'block';
+  document.getElementById('videoGrid').innerHTML=list.map(v=>{
+    const th=v.thumb||(v.jenis==='youtube'?`https://img.youtube.com/vi/${v.ytId}/hqdefault.jpg`:'');
+    return `<div class="video-card"><div class="v-thumb" onclick="openVideo(${v.id})">${th?`<img src="${th}" alt="" onerror="this.style.display='none'">`:''}<div class="v-play"></div>${v.durasi?`<div class="v-dur">${v.durasi}</div>`:''}</div>
+    <div class="v-body"><span class="news-tag tag-video" style="font-size:10px">${v.kat}</span><h4>${v.judul}</h4><p>${v.desc||''}</p>
+    <div class="v-meta"><span>📅 ${v.tanggal||''}</span><div class="v-adm"><button onclick="editVideo(${v.id})" class="btn btn-warn btn-sm">✏️</button><button onclick="delVideo(${v.id})" class="btn btn-danger btn-sm">×</button></div></div></div></div>`;
+  }).join('');
+}
+function editFoto(e,id){e.stopPropagation();const f=foto.find(x=>x.id===id);if(!f)return;
+  document.getElementById('fTitle').textContent='✏️ Edit Foto';document.getElementById('fId').value=id;
+  document.getElementById('fJdl').value=f.judul;document.getElementById('fAlb').value=f.album||'Lainnya';
+  document.getElementById('fTgl').value=f.tanggal||'';document.getElementById('fUrl').value=f.url||'';
+  document.getElementById('fIkon').value=f.ikon||'🌴';document.getElementById('fKet').value=f.ket||'';openMo('moFoto');}
+function delFoto(e,id){e.stopPropagation();if(!confirm('Hapus foto?'))return;foto=foto.filter(f=>f.id!==id);S.s('foto',foto);renderFoto();bldGFilt();toast('Foto dihapus');}
+function saveFoto(){
+  const id=parseInt(v('fId'))||0,j=v('fJdl');if(!j){toast('Judul wajib','#dc2626');return;}
+  const item={id:id||Date.now(),judul:j,album:v('fAlb'),tanggal:v('fTgl'),url:v('fUrl'),ikon:v('fIkon')||'🌴',ket:v('fKet')};
+  if(id) foto=foto.map(x=>x.id===id?item:x);else foto.unshift(item);
+  S.s('foto',foto);closeMo('moFoto');renderFoto();bldGFilt();toast('Foto disimpan ✓');
+  document.getElementById('fId').value='';document.getElementById('fTitle').textContent='📷 Foto';
+  ['fJdl','fUrl','fKet'].forEach(x=>document.getElementById(x).value='');
+}
+function editVideo(id){const vd=video.find(x=>x.id===id);if(!vd)return;
+  document.getElementById('vTitle').textContent='✏️ Edit Video';document.getElementById('vId').value=id;
+  document.getElementById('vJdl').value=vd.judul;document.getElementById('vKat').value=vd.kat||'Lainnya';
+  document.getElementById('vTgl').value=vd.tanggal||'';document.getElementById('vJenis').value=vd.jenis||'youtube';
+  document.getElementById('vYt').value=vd.ytId||'';document.getElementById('vUrl').value=vd.url||'';
+  document.getElementById('vThumb').value=vd.thumb||'';document.getElementById('vDur').value=vd.durasi||'';
+  document.getElementById('vDesc').value=vd.desc||'';togVid();openMo('moVideo');}
+function delVideo(id){if(!confirm('Hapus video?'))return;video=video.filter(x=>x.id!==id);S.s('video',video);renderVideo();bldGFilt();toast('Video dihapus');}
+function togVid(){const j=v('vJenis');document.getElementById('vYtWrap').style.display=j==='youtube'?'block':'none';document.getElementById('vUrlWrap').style.display=j==='url'?'block':'none';}
+function saveVideo(){
+  const id=parseInt(v('vId'))||0,j=v('vJdl');if(!j){toast('Judul wajib','#dc2626');return;}
+  let ytId=v('vYt');if(ytId.includes('youtu.be/'))ytId=ytId.split('youtu.be/')[1].split('?')[0];else if(ytId.includes('watch?v='))ytId=ytId.split('watch?v=')[1].split('&')[0];
+  const item={id:id||Date.now(),judul:j,kat:v('vKat'),tanggal:v('vTgl'),jenis:v('vJenis'),ytId,url:v('vUrl'),thumb:v('vThumb'),durasi:v('vDur'),desc:v('vDesc')};
+  if(id) video=video.map(x=>x.id===id?item:x);else video.unshift(item);
+  S.s('video',video);closeMo('moVideo');renderVideo();bldGFilt();toast('Video disimpan ✓');
+  document.getElementById('vId').value='';document.getElementById('vTitle').textContent='🎬 Video';
+  ['vJdl','vYt','vUrl','vThumb','vDur','vDesc'].forEach(x=>document.getElementById(x).value='');
+}
+
+/* Lightbox */
+function openLbFoto(id){
+  const list=gAlb==='semua'?foto:foto.filter(f=>f.album===gAlb);
+  lbItems=list;lbIdx=list.findIndex(f=>f.id===id);
+  document.querySelector('.lb-p').style.display='flex';
+  document.querySelector('.lb-n').style.display='flex';
+  showLbF();
+  document.getElementById('lb').classList.add('open');
+}
+function showLbF(){const f=lbItems[lbIdx];const inn=document.getElementById('lbInner');inn.innerHTML=f.url?`<img class="lb-img" src="${f.url}" alt="${f.judul}">`:`<div style="font-size:8rem;text-align:center">${f.ikon||'🌴'}</div>`;inn.innerHTML+=`<div class="lb-cap"><strong>${f.judul}</strong>${f.ket||''} — ${f.tanggal||''}</div>`;document.getElementById('lbCtr').textContent=`${lbIdx+1} / ${lbItems.length}`;}
+function lbNav(d){lbIdx=(lbIdx+d+lbItems.length)%lbItems.length;showLbF();}
+function closeLb(e){if(!e||e.target===document.getElementById('lb'))document.getElementById('lb').classList.remove('open');}
+function openVideo(id){
+  const vd=video.find(x=>x.id===id);if(!vd)return;
+  // tutup lightbox foto dulu jika terbuka
+  const lb=document.getElementById('lb');
+  lb.classList.remove('open');
+  const inn=document.getElementById('lbInner');
+  document.getElementById('lbCtr').textContent='';
+  // sembunyikan panah navigasi (tidak relevan untuk video)
+  document.querySelector('.lb-p').style.display='none';
+  document.querySelector('.lb-n').style.display='none';
+  let ytid='';
+  if(vd.jenis==='youtube'||!vd.jenis){
+    let raw=vd.ytId||'';
+    if(raw.includes('youtu.be/')) ytid=raw.split('youtu.be/')[1].split('?')[0];
+    else if(raw.includes('watch?v=')) ytid=raw.split('watch?v=')[1].split('&')[0];
+    else if(raw.includes('embed/')) ytid=raw.split('embed/')[1].split('?')[0];
+    else ytid=raw.trim();
+    if(!ytid){toast('ID YouTube tidak valid','#dc2626');return;}
+    inn.innerHTML=`<div class="lb-vw">
+      <iframe
+        src="https://www.youtube.com/embed/${ytid}?autoplay=1&rel=0"
+        title="${vd.judul}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width:100%;height:100%;border:none">
+      </iframe>
+    </div>
+    <div class="lb-cap"><strong>${vd.judul}</strong><span>${vd.desc||''}</span></div>`;
+  } else {
+    if(!vd.url){toast('URL video tidak ditemukan','#dc2626');return;}
+    inn.innerHTML=`<div class="lb-vw">
+      <video src="${vd.url}" controls autoplay style="width:100%;height:100%"></video>
+    </div>
+    <div class="lb-cap"><strong>${vd.judul}</strong><span>${vd.desc||''}</span></div>`;
+  }
+  lb.classList.add('open');
+}
+
+function closeLb(e){
+  if(!e||e.target===document.getElementById('lb')){
+    // hentikan video saat lightbox ditutup
+    const inn=document.getElementById('lbInner');
+    const iframe=inn.querySelector('iframe');
+    const vid=inn.querySelector('video');
+    if(iframe) iframe.src=iframe.src; // reset iframe = stop video
+    if(vid){vid.pause();vid.src='';}
+    document.querySelector('.lb-p').style.display='flex';
+    document.querySelector('.lb-n').style.display='flex';
+    document.getElementById('lb').classList.remove('open');
+  }
+}
+
+/* ===== LOGIN / LOGOUT ===== */
+let isAdmin=false;
+function doLogin(){
+  if(document.getElementById('lusr').value==='admin'&&document.getElementById('lpwd').value==='gapki2026'){
+    isAdmin=true;closeMo('moLogin');
+    document.getElementById('abar').classList.add('on');
+    document.getElementById('adminToggle').textContent='✅ Admin';
+    document.getElementById('btnAddFoto').style.display='inline-flex';
+    document.getElementById('btnAddVideo').style.display='inline-flex';
+    document.body.classList.add('admin-on');
+    renderAll();toast('Mode Admin aktif — hover elemen untuk edit');
+  } else toast('Salah username/password','#dc2626');
+}
+function logout(){isAdmin=false;document.getElementById('abar').classList.remove('on');document.getElementById('adminToggle').textContent='🔐 Admin';document.getElementById('btnAddFoto').style.display='none';document.getElementById('btnAddVideo').style.display='none';document.body.classList.remove('admin-on');renderAll();toast('Keluar dari mode Admin');}
+
+/* ===== MODAL ===== */
+function openMo(id){
+  document.getElementById(id).classList.add('open');
+  if(id==='moTBS') setTimeout(buildTBSForm,40);
+  if(id==='moTicker') setTimeout(buildTickerForm,40);
+  if(id==='moStats') setTimeout(buildStatsForm,40);
+  if(id==='moSlider') setTimeout(buildSliderForm,40);
+  if(id==='moAbout') setTimeout(openAbout,40);
+  if(id==='moContact') setTimeout(buildContactForm,40);
+  if(id==='moSite') setTimeout(openSite,40);
+  if(id==='moTexts') setTimeout(buildAllTextsForm,40);
+}
+function closeMo(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.mo').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+
+/* ===== TOAST ===== */
+function toast(msg,bg='var(--g)'){const t=document.getElementById('toast');t.textContent=msg;t.style.background=bg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+
+/* ===== HELPER ===== */
+function v(id){const el=document.getElementById(id);return el?(el.tagName==='TEXTAREA'||el.tagName==='INPUT'||el.tagName==='SELECT'?el.value:el.textContent).trim():'';}
+
+/* ===== RENDER ALL ===== */
+function renderAll(){applyTexts();applyScfg();renderStats();renderSlider();renderNews();renderTBS();renderAgenda();renderPeng();renderTicker();renderFoto();bldGFilt();renderVideo();renderAbout();renderContact();}
+
+/* ===== HISTORIS TBS DATA 2010-2026 ===== */
+const HIST_BULAN = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+const HIST_BULAN_FULL = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+
+const HIST_DATA = {
+  2010: [1352.73, 1398.36, 1392.58, 1540.11, 1441.29, 1470.91, 1427.90, 1422.65, 1604.41, 1676.39, 1727.12, 1906.36],
+  2011: [1948.13, 1986.84, 1957.24, 1758.25, 1792.49, 1908.92, 1863.54, 1651.68, 1743.35, 1709.70, 1495.15, 1693.04],
+  2012: [1649.39, 1687.81, 1705.28, 1860.30, 1899.37, 1664.78, 1521.82, 1650.69, 1605.53, 1546.85, 1299.00, 1293.27],
+  2013: [1224.69, 1392.59, 1446.37, 1428.09, 1449.73, 1504.15, 1503.47, 1478.60, 1579.47, 1690.91, 1751.29, 1903.15],
+  2014: [1985.49, 1997.57, 2098.13, 2145.52, 2022.65, 1939.10, 1925.20, 1892.43, 1642.04, 1625.40, 1718.11, 1748.06],
+  2015: [1672.63, 1767.06, 1787.33, 1816.66, 1695.87, 1702.07, 1604.65, 1281.63, 1251.40, 1394.55, 1299.15, 1394.21],
+  2016: [1415.40, 1509.80, 1699.23, 1909.35, 1988.79, 1926.16, 1795.52, 1845.52, 2006.40, 1939.43, 1950.90, 2120.87],
+  2017: [2258.27, 2270.27, 2147.75, 1916.97, 1882.91, 1887.55, 1828.18, 1806.09, 1924.25, 2048.40, 2047.14, 2011.29],
+  2018: [1912.87, 1909.26, 1921.14, 1890.37, 1855.08, 1801.73, 1703.61, 1654.89, 1637.51, 1592.60, 1490.07, 1377.93],
+  2019: [1491.70, 1584.47, 1584.23, 1541.39, 1512.97, 1451.54, 1420.98, 1442.25, 1535.96, 1496.77, 1537.47, 1808.78],
+  2020: [2053.20, 2192.30, 1918.74, 1771.95, 1832.17, 1577.10, 1653.10, 1650.11, 2001.39, 2078.40, 2151.14, 2202.53],
+  2021: [2230.55, 2314.23, 2299.04, 2434.42, 2486.46, 2689.88, 2324.72, 2686.79, 2868.93, 2840.78, 3297.07, 3556.23],
+  2022: [3531.84, 3744.47, 4333.83, 4167.15, 3712.00, 3313.39, 1898.35, 2217.04, 2573.76, 2571.40, 2805.99, 2718.33],
+  2023: [2594.76, 2682.29, 2937.83, 2715.05, 2378.05, 2269.85, 2418.48, 2486.66, 2520.40, 2473.92, 2524.35, 2519.84],
+  2024: [2551.22, 2734.56, 2894.08, 3022.98, 2835.82, 2914.71, 3065.81, 3109.86, 3162.36, 3345.81, 3641.84, 3738.59],
+  2025: [3211.14, 3569.95, 3748.96, 3742.68, 3513.71, 3340.90, 3398.32, 3700.48, 3724.39, 3719.32, 3511.74, 3535.01],
+  2026: [3578.22, 3693.68, 3888.86, 4119.56, 4012.95, null, null, null, null, null, null, null],
+};
+
+const HIST_YEARS = Object.keys(HIST_DATA).map(Number);
+
+// Yearly averages
+function yearAvg(yr) {
+  const vals = HIST_DATA[yr].filter(v => v !== null);
+  return vals.reduce((a, b) => a + b, 0) / vals.length;
+}
+
+const YEAR_AVGS = {};
+HIST_YEARS.forEach(y => { YEAR_AVGS[y] = yearAvg(y); });
+
+// Palette 17 colors
+const HIST_PALETTE = [
+  '#4ade80','#facc15','#60a5fa','#f87171','#c084fc',
+  '#fb923c','#34d399','#f472b6','#a78bfa','#38bdf8',
+  '#fbbf24','#86efac','#fd8a8a','#93c5fd','#e2e8f0',
+  '#d4a017','#7dd3fc'
+];
+
+let chartTahunan = null, chartBulanan = null, chartYoY = null, chartMulti = null;
+let mainChartType = 'bar';
+let activeYears = new Set(HIST_YEARS);
+
+const CHART_DEFAULTS = {
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: 'rgba(10,34,17,.92)',
+      borderColor: 'rgba(200,146,43,.4)',
+      borderWidth: 1,
+      titleColor: '#e8b84b',
+      bodyColor: 'rgba(255,255,255,.8)',
+      callbacks: {
+        label: ctx => ` Rp ${parseFloat(ctx.raw).toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 2})}`,
+      }
+    }
+  },
+  scales: {
+    x: {
+      ticks: { color: 'rgba(255,255,255,.45)', font: { size: 11 } },
+      grid: { color: 'rgba(255,255,255,.06)' },
+    },
+    y: {
+      ticks: {
+        color: 'rgba(255,255,255,.45)',
+        font: { size: 11 },
+        callback: v => 'Rp ' + (v/1000).toFixed(1) + 'K'
+      },
+      grid: { color: 'rgba(255,255,255,.08)' },
+    }
+  }
+};
+
+function histInit() {
+  buildKPI();
+  buildChartTahunan();
+  buildChartBulanan();
+  buildChartYoY();
+  buildChartMulti();
+  buildHistTable();
+}
+
+function buildKPI() {
+  // Find overall high/low
+  let high = 0, low = Infinity, highInfo = '', lowInfo = '';
+  HIST_YEARS.forEach(yr => {
+    HIST_DATA[yr].forEach((v, mi) => {
+      if (v === null) return;
+      if (v > high) { high = v; highInfo = HIST_BULAN_FULL[mi] + ' ' + yr; }
+      if (v < low) { low = v; lowInfo = HIST_BULAN_FULL[mi] + ' ' + yr; }
+    });
+  });
+  const allVals = HIST_YEARS.flatMap(y => HIST_DATA[y].filter(v => v !== null));
+  const overall = allVals.reduce((a, b) => a + b, 0) / allVals.length;
+
+  // CAGR 2010-2025
+  const cagr = (Math.pow(YEAR_AVGS[2025] / YEAR_AVGS[2010], 1/15) - 1) * 100;
+
+  document.getElementById('hkpi-high').textContent = 'Rp ' + high.toLocaleString('id-ID', {maximumFractionDigits: 0});
+  document.getElementById('hkpi-high-info').textContent = highInfo;
+  document.getElementById('hkpi-low').textContent = 'Rp ' + low.toLocaleString('id-ID', {maximumFractionDigits: 0});
+  document.getElementById('hkpi-low-info').textContent = lowInfo;
+  document.getElementById('hkpi-avg').textContent = 'Rp ' + overall.toLocaleString('id-ID', {maximumFractionDigits: 0});
+  document.getElementById('hkpi-cagr').textContent = '+' + cagr.toFixed(1) + '%/thn';
+}
+
+function buildChartTahunan() {
+  const ctx = document.getElementById('chartTahunan').getContext('2d');
+  const labels = HIST_YEARS.map(String);
+  const data = HIST_YEARS.map(y => +YEAR_AVGS[y].toFixed(2));
+  const colors = data.map((v, i) => {
+    if (i === data.length - 1) return 'rgba(232,184,75,.8)';
+    const mx = Math.max(...data.slice(0, -1));
+    if (v >= mx * 0.9) return 'rgba(74,222,128,.75)';
+    if (v < 1700) return 'rgba(248,113,113,.65)';
+    return 'rgba(78,175,110,.55)';
+  });
+
+  chartTahunan = new Chart(ctx, {
+    type: mainChartType,
+    data: {
+      labels,
+      datasets: [{
+        label: 'Rata-rata',
+        data,
+        backgroundColor: mainChartType === 'bar' ? colors : 'transparent',
+        borderColor: mainChartType === 'line' ? '#4ade80' : colors,
+        borderWidth: mainChartType === 'line' ? 2.5 : 1,
+        pointBackgroundColor: '#4ade80',
+        pointRadius: 5,
+        tension: 0.3,
+        fill: mainChartType === 'line' ? { target: 'origin', above: 'rgba(74,222,128,.08)' } : false,
+      }]
+    },
+    options: {
+      ...CHART_DEFAULTS,
+      responsive: true,
+      plugins: {
+        ...CHART_DEFAULTS.plugins,
+        tooltip: {
+          ...CHART_DEFAULTS.plugins.tooltip,
+          callbacks: {
+            title: ctx => 'Tahun ' + ctx[0].label,
+            label: ctx => ' Rp ' + parseFloat(ctx.raw).toLocaleString('id-ID', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '/kg',
+          }
+        }
+      },
+      scales: {
+        x: { ...CHART_DEFAULTS.scales.x },
+        y: {
+          ...CHART_DEFAULTS.scales.y,
+          beginAtZero: false,
+          min: 1200,
+        }
+      }
+    }
+  });
+}
+
+function switchMainChart(type, btn) {
+  mainChartType = type;
+  document.querySelectorAll('.hist-tab-group .hist-tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  if (chartTahunan) { chartTahunan.destroy(); chartTahunan = null; }
+  buildChartTahunan();
+}
+
+function buildChartBulanan() {
+  const ctx = document.getElementById('chartBulanan').getContext('2d');
+  // Monthly averages across all years (excluding nulls)
+  const monthAvgs = HIST_BULAN.map((_, mi) => {
+    const vals = HIST_YEARS.map(y => HIST_DATA[y][mi]).filter(v => v !== null);
+    return vals.reduce((a, b) => a + b, 0) / vals.length;
+  });
+
+  chartBulanan = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: HIST_BULAN,
+      datasets: [{
+        label: 'Rata-rata bulanan',
+        data: monthAvgs.map(v => +v.toFixed(0)),
+        backgroundColor: 'rgba(74,222,128,.12)',
+        borderColor: '#4ade80',
+        borderWidth: 2,
+        pointBackgroundColor: '#e8b84b',
+        pointRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(10,34,17,.92)',
+          borderColor: 'rgba(200,146,43,.4)',
+          borderWidth: 1,
+          titleColor: '#e8b84b',
+          bodyColor: 'rgba(255,255,255,.8)',
+          callbacks: { label: ctx => ' Rp ' + ctx.raw.toLocaleString('id-ID') + '/kg' }
+        }
+      },
+      scales: {
+        r: {
+          ticks: { color: 'rgba(255,255,255,.35)', font: { size: 10 }, backdropColor: 'transparent', callback: v => 'Rp'+Math.round(v/1000)+'K' },
+          grid: { color: 'rgba(255,255,255,.08)' },
+          pointLabels: { color: 'rgba(255,255,255,.6)', font: { size: 11, weight: '700' } },
+          angleLines: { color: 'rgba(255,255,255,.07)' },
+        }
+      }
+    }
+  });
+}
+
+function buildChartYoY() {
+  const ctx = document.getElementById('chartYoY').getContext('2d');
+  const labels = HIST_YEARS.slice(1).map(String);
+  const yoyData = HIST_YEARS.slice(1).map(y => {
+    const prev = YEAR_AVGS[y - 1];
+    return +((YEAR_AVGS[y] - prev) / prev * 100).toFixed(1);
+  });
+
+  chartYoY = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'YoY %',
+        data: yoyData,
+        backgroundColor: yoyData.map(v => v >= 0 ? 'rgba(74,222,128,.7)' : 'rgba(248,113,113,.7)'),
+        borderColor: yoyData.map(v => v >= 0 ? '#4ade80' : '#f87171'),
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(10,34,17,.92)',
+          borderColor: 'rgba(200,146,43,.4)',
+          borderWidth: 1,
+          titleColor: '#e8b84b',
+          bodyColor: 'rgba(255,255,255,.8)',
+          callbacks: {
+            title: ctx => 'Tahun ' + ctx[0].label,
+            label: ctx => ' ' + (ctx.raw >= 0 ? '+' : '') + ctx.raw + '% vs tahun lalu',
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: 'rgba(255,255,255,.45)', font: { size: 10 } }, grid: { display: false } },
+        y: {
+          ticks: { color: 'rgba(255,255,255,.45)', font: { size: 10 }, callback: v => v + '%' },
+          grid: { color: 'rgba(255,255,255,.07)' },
+        }
+      }
+    }
+  });
+}
+
+function buildChartMulti() {
+  const ctx = document.getElementById('chartMulti').getContext('2d');
+  const legend = document.getElementById('yearLegend');
+
+  const datasets = HIST_YEARS.map((yr, i) => ({
+    label: String(yr),
+    data: HIST_DATA[yr],
+    borderColor: HIST_PALETTE[i % HIST_PALETTE.length],
+    backgroundColor: 'transparent',
+    borderWidth: yr >= 2024 ? 3 : yr >= 2020 ? 2 : 1.5,
+    pointRadius: yr >= 2024 ? 4 : 2,
+    tension: 0.3,
+    hidden: false,
+    spanGaps: false,
+  }));
+
+  chartMulti = new Chart(ctx, {
+    type: 'line',
+    data: { labels: HIST_BULAN, datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: 'rgba(10,34,17,.95)',
+          borderColor: 'rgba(200,146,43,.4)',
+          borderWidth: 1,
+          titleColor: '#e8b84b',
+          bodyColor: 'rgba(255,255,255,.75)',
+          callbacks: {
+            label: ctx => ctx.dataset.label + ': Rp ' + (ctx.raw !== null ? parseFloat(ctx.raw).toLocaleString('id-ID', {maximumFractionDigits: 0}) : '—'),
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: 'rgba(255,255,255,.5)', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,.06)' } },
+        y: {
+          min: 1000,
+          ticks: { color: 'rgba(255,255,255,.45)', font: { size: 11 }, callback: v => 'Rp ' + (v/1000).toFixed(1) + 'K' },
+          grid: { color: 'rgba(255,255,255,.07)' }
+        }
+      }
+    }
+  });
+
+  // Build legend
+  legend.innerHTML = HIST_YEARS.map((yr, i) => `
+    <div class="hist-leg-item" style="cursor:pointer" onclick="toggleYear(${yr})" id="leg-${yr}">
+      <div class="hist-leg-dot" style="background:${HIST_PALETTE[i % HIST_PALETTE.length]}"></div>
+      ${yr}
+    </div>`).join('');
+}
+
+function toggleYear(yr) {
+  if (activeYears.has(yr)) activeYears.delete(yr);
+  else activeYears.add(yr);
+
+  chartMulti.data.datasets.forEach(ds => {
+    ds.hidden = !activeYears.has(parseInt(ds.label));
+  });
+  chartMulti.update();
+
+  document.querySelectorAll('[id^="leg-"]').forEach(el => {
+    const y = parseInt(el.id.replace('leg-', ''));
+    el.style.opacity = activeYears.has(y) ? '1' : '0.3';
+  });
+}
+
+function selAllYears(all) {
+  if (all) activeYears = new Set(HIST_YEARS);
+  else activeYears = new Set([2024, 2025, 2026]);
+
+  chartMulti.data.datasets.forEach(ds => {
+    ds.hidden = !activeYears.has(parseInt(ds.label));
+  });
+  chartMulti.update();
+
+  document.querySelectorAll('[id^="leg-"]').forEach(el => {
+    const y = parseInt(el.id.replace('leg-', ''));
+    el.style.opacity = activeYears.has(y) ? '1' : '0.3';
+  });
+}
+
+function buildHistTable() {
+  const tbl = document.getElementById('histTable');
+  // Find max/min per row
+  const rowMax = HIST_BULAN.map((_, mi) => Math.max(...HIST_YEARS.map(y => HIST_DATA[y][mi] || 0)));
+  const rowMin = HIST_BULAN.map((_, mi) => Math.min(...HIST_YEARS.map(y => HIST_DATA[y][mi] || Infinity)));
+
+  const headerRow = `<tr>
+    <th>Bulan</th>
+    ${HIST_YEARS.map(y => `<th>${y}</th>`).join('')}
+  </tr>`;
+
+  const bodyRows = HIST_BULAN_FULL.map((bln, mi) => {
+    const cells = HIST_YEARS.map(yr => {
+      const v = HIST_DATA[yr][mi];
+      if (v === null) return '<td style="color:rgba(255,255,255,.2)">—</td>';
+      const fmt = v.toLocaleString('id-ID', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      if (v === rowMax[mi]) return `<td class="best">${fmt}</td>`;
+      if (v <= rowMin[mi] * 1.02) return `<td class="worst">${fmt}</td>`;
+      return `<td>${fmt}</td>`;
+    }).join('');
+    return `<tr><td>${bln}</td>${cells}</tr>`;
+  }).join('');
+
+  const avgRow = `<tr class="avg-row"><td>Rata-rata</td>${HIST_YEARS.map(y => `<td>${YEAR_AVGS[y].toLocaleString('id-ID', {minimumFractionDigits: 0, maximumFractionDigits: 0})}</td>`).join('')}</tr>`;
+
+  tbl.innerHTML = `<thead>${headerRow}</thead><tbody>${bodyRows}${avgRow}</tbody>`;
+}
+
+/* ===== BOOT ===== */
+renderAll();
+['bTgl','agTgl','pgTgl','fTgl','vTgl'].forEach(id=>{const el=document.getElementById(id);if(el)el.valueAsDate=new Date();});
+initCounter();
+// Init historis charts after page load
+if (typeof Chart !== 'undefined') {
+  histInit();
+} else {
+  window.addEventListener('load', histInit);
+}
+</script>
+</body>
+</html>
